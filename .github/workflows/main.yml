@@ -34,6 +34,7 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime
+          haxelib install newgrounds
           haxelib install openfl
           haxelib --never install flixel
           haxelib run lime setup flixel
@@ -74,6 +75,7 @@ jobs:
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
           haxelib install lime
+          haxelib install newgrounds
           haxelib install openfl
           haxelib --never install flixel
           haxelib run lime setup flixel
@@ -115,6 +117,7 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime
+          haxelib install newgrounds
           haxelib install openfl
           haxelib --never install flixel
           haxelib run lime setup flixel
