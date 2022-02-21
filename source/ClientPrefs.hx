@@ -26,6 +26,7 @@ class ClientPrefs {
 	public static var timeBarType:String = 'Time Left';
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
+	public static var moreThings:Bool = false;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
@@ -103,6 +104,7 @@ class ClientPrefs {
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
+		FlxG.save.data.moreThings = moreThings;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
 		FlxG.save.data.timeBarType = timeBarType;
@@ -142,6 +144,9 @@ class ClientPrefs {
 			if(Main.fpsVar != null) {
 				Main.fpsVar.visible = showFPS;
 			}
+		}
+		if(FlxG.save.data.moreThings != null) {
+			moreThings = FlxG.save.data.moreThings;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
