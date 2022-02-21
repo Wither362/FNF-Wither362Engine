@@ -124,6 +124,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.minValue = 15;
 		option.maxValue = 135;
 		addOption(option);
+		
+		var option:Option = new Option('More Things'
+		  'Changes some things\njejeje.',
+      'moreThings',
+      'bool'
+      false);
+    addOption(option);
 
 		var option:Option = new Option('Safe Frames',
 			'Changes how many frames you have for\nhitting a note earlier or late.',
