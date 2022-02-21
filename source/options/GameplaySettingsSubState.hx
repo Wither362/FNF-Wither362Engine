@@ -128,7 +128,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('More Things',
 		  'Changes some things\njejeje.',
 		  'moreThings',
-		  'bool'
+		  'bool',
 		  false);
 		addOption(option);
 
