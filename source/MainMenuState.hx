@@ -36,7 +36,7 @@ class MainMenuState extends MusicBeatState
 		'story_mode',
 		'freeplay',
     if(!ClientPrefs.moreThings) {
-      'mods', 
+      'mods';
     }
 		#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
