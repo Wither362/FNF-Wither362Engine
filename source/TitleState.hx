@@ -535,11 +535,11 @@ class TitleState extends MusicBeatState
 					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 					#end
 				// credTextShit.visible = true;
-				case 3:
+				case 3: //valor anterior +2
 					#if PSYCH_WATERMARKS
 					addMoreText('Shadow Mario', 15);
 					addMoreText('RiverOaken', 15);
-					addMoreText('shubs', 15);
+					addMoreText('bb-panzu', 15);
 					#else
 					addMoreText('present');
 					#end
@@ -552,42 +552,77 @@ class TitleState extends MusicBeatState
 				// credTextShit.screenCenter();
 				case 5:
 					#if PSYCH_WATERMARKS
-					createCoolText(['Not associated', 'with'], -40);
+					createCoolText(['But modificated by'], 15);
 					#else
-					createCoolText(['In association', 'with'], -40);
+					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 					#end
-				case 7:
-					addMoreText('newgrounds', -40);
+				// credTextShit.visible = true;
+				case 7: //anterior valor +2
+					addMoreText('Wither362', 15);
+				// credTextShit.text += '\npresent...';
+				// credTextShit.addText();
+				case 8:
+					deleteCoolText();
+				// credTextShit.visible = false;
+				// credTextShit.text = 'In association \nwith';
+				// credTextShit.screenCenter();
+				case 9: //cosa de newgrounds
+					#if PSYCH_WATERMARKS 
+					createCoolText(['A mod made with', 'help of'], -40);
+					#else
+					createCoolText(['A mod made with', 'help of'], -40);
+					#end
+				case 11: //valor anterior +2
+					addMoreText('Wentuj', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
-				case 8:
+				case 12:
 					deleteCoolText();
 					ngSpr.visible = false;
 				// credTextShit.visible = false;
 
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
-				case 9:
+				case 13: //otra vez lo de newgrounds
+					#if PSYCH_WATERMARKS
+					createCoolText(['A mod made', 'by'], -40);
+					#else
+					createCoolText(['A mod made', 'by'], -40);
+					#end
+				case 15: //valor anterior +2
+					addMoreText('Witherplays362', -40);
+				// credTextShit.text += '\nNewgrounds';
+				case 16:
+					deleteCoolText();
+					ngSpr.visible = false;
+				// credTextShit.visible = false;
+
+				// credTextShit.text = 'Shoutouts Tom Fulp';
+
+				case 17:
 					createCoolText([curWacky[0]]);
 				// credTextShit.visible = true;
-				case 11:
+				case 18: //valor anterior +2
 					addMoreText(curWacky[1]);
 				// credTextShit.text += '\nlmao';
-				case 12:
+				case 19:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
-				case 13:
+				case 20:
 					addMoreText('Friday');
 				// credTextShit.visible = true;
-				case 14:
+				case 21:
 					addMoreText('Night');
 				// credTextShit.text += '\nNight';
-				case 15:
+				case 22:
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
 
-				case 16:
+				case 23:
+					addMoreText('Please like it');
+				
+				case 24:
 					skipIntro();
 			}
 		}
