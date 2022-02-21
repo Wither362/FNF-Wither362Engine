@@ -127,9 +127,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		
 		var option:Option = new Option('More Things'
 		  'Changes some things\njejeje.',
-      'moreThings',
-      'bool'
-      false);
+                                               'moreThings',
+                                               'bool',
+                                               false);
     addOption(option);
 
 		var option:Option = new Option('Safe Frames',
