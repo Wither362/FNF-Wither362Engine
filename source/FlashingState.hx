@@ -24,13 +24,16 @@ class FlashingState extends MusicBeatState
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey, watch out!\n
-			This Mod contains some flashing lights!\n
-			Press ENTER to disable them now or go to Options Menu.\n
-			Press ESCAPE to ignore this message.\n
-			You've been warned!",
-			32);
-		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+			"PLEASE, THIS MOD TAKED ME\n
+                        A LOT OF TIME! SO IT WILL HAVE BUGS\n
+                        MY DISCORD: Wither#978 PLEASE TAKE IT IN MIND\n
+                        Also, this mod contains flashing lights\n
+                        press ESCAPE to ignore and ENTER to disable them\n
+                        And also this mod contains\n
+                        BAD WORDS\n
+                        BE CAREFUL",
+			26);
+		warnText.setFormat("VCR OSD Mono", 26, FlxColor.RED, CENTER);
 		warnText.screenCenter(Y);
 		add(warnText);
 	}
