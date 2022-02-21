@@ -125,7 +125,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 135;
 		addOption(option);
 		
-		var option:Option = new Option('More Things'
+		var option:Option = new Option('More Things',
 		  'Changes some things\njejeje.',
 		  'moreThings',
 		  'bool'
