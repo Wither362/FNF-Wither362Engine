@@ -348,13 +348,13 @@ class ModsMenuState extends MusicBeatState
 		super.create();
 	}
 
-	/*function getIntArray(max:Int):Array<Int>{
+	function getIntArray(max:Int):Array<Int>{
 		var arr:Array<Int> = [];
 		for (i in 0...max){
 			arr.push(i);
 		}
 		return arr;
-	}*/
+	}
 	function addToModsList(values:Array<Dynamic>)
 	{
 		for (i in 0...modsList.length)
