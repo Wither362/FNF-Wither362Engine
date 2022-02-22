@@ -200,7 +200,7 @@ class WeekEditorState extends MusicBeatState
 		blockPressWhileTypingOn.push(weekFileInputText);
 		reloadWeekThing();
 
-		hideCheckbox = new FlxUICheckBox(10, weekFileInputText.y + 40, null, null, "Hide Week from Story Mode?", 100);
+		hideCheckbox = new FlxUICheckBox(10, weekFileInputText.y + 40, null, null, "Hide Week from fucking Story Mode?", 100);
 		hideCheckbox.callback = function()
 		{
 			weekFile.hideStoryMode = hideCheckbox.checked;
@@ -249,7 +249,7 @@ class WeekEditorState extends MusicBeatState
 		
 		tab_group.add(new FlxText(weekBeforeInputText.x, weekBeforeInputText.y - 28, 0, 'Week File name of the Week you have\nto finish for Unlocking:'));
 		tab_group.add(new FlxText(difficultiesInputText.x, difficultiesInputText.y - 20, 0, 'Difficulties:'));
-		tab_group.add(new FlxText(difficultiesInputText.x, difficultiesInputText.y + 20, 0, 'Default difficulties are "Easy, Normal, Hard"\nwithout quotes.'));
+		tab_group.add(new FlxText(difficultiesInputText.x, difficultiesInputText.y + 20, 0, 'Default difficulties are "Normal, Hard"\nwithout quotes.'));
 		tab_group.add(weekBeforeInputText);
 		tab_group.add(difficultiesInputText);
 		tab_group.add(lockedCheckbox);
