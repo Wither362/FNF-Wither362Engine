@@ -62,6 +62,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var wrSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -329,6 +330,14 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
+		
+		wrSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('wither_logo'));
+		add(wrSpr);
+		wrSpr.visible = false;
+		wrSpr.setGraphicSize(Std.int(wrSpr.width * 0.8));
+		wrSpr.updateHitbox();
+		wrSpr.screenCenter(X);
+		wrSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -591,6 +600,7 @@ class TitleState extends MusicBeatState
 					#end
 				case 15: //valor anterior +2
 					addMoreText('Witherplays362', -40);
+					wrSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
 				case 16:
 					deleteCoolText();
