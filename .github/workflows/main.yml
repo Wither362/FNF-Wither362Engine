@@ -33,7 +33,7 @@ jobs:
         run: |
           haxelib setup /home/runner/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime
+          haxelib install lime 7.9.0
           haxelib install newgrounds
           haxelib install modular 0.14.0 
           haxelib install hscript 2.4.0 
@@ -77,7 +77,7 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
-          haxelib install lime
+          haxelib install lime 7.9.0
           haxelib install newgrounds
           haxelib install modular 0.14.0
           haxelib install hscript 2.4.0 
@@ -122,7 +122,7 @@ jobs:
         run: |
           haxelib setup /home/runner/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime
+          haxelib install lime 7.9.0
           haxelib install newgrounds
           haxelib install modular 0.14.0
           haxelib install hscript 2.4.0
