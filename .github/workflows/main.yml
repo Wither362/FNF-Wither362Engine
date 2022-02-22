@@ -27,14 +27,15 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.0
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime
           haxelib install openfl
+          haxelib git clone --recursive https://github.com/openfl/lime
+          haxelib dev lime lime
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
@@ -67,14 +68,14 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.0
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
-          haxelib install lime
           haxelib install openfl
+          haxelib git clone --recursive https://github.com/openfl/lime
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
@@ -108,14 +109,14 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.0
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime
           haxelib install openfl
+          haxelib git clone --recursive https://github.com/openfl/lime
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
