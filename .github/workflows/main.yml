@@ -59,7 +59,7 @@ jobs:
         with:
           name: linuxBuild
           path: 'export/release/linux/bin' 
-  buildWindows:
+  buildWindows2:
     runs-on: windows-latest
     
     steps:
@@ -98,8 +98,8 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: windowsBuild
-          path: export/release/windows/bin
+          name: windowsBuild2
+          path: export/release/windows2/bin
   buildMac:
     runs-on: macos-latest
 
@@ -140,3 +140,12 @@ jobs:
         with:
           name: macBuild
           path: export/release/macos/bin
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
+      - name: Compile
+        run: haxelib run lime build windows --app-version="4.0.0-${{ github.run_id}}"
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: windowsBuild
+          path: export/release/windows/bin
