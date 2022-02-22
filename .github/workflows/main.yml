@@ -31,7 +31,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
-          haxelib setup ~/home/runner/haxelib
+          haxelib setup ~/runner/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0
           haxelib install newgrounds
@@ -120,7 +120,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
-          haxelib setup ~/home/runner/haxelib
+          haxelib setup ~/runner/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0
           haxelib install newgrounds
