@@ -380,6 +380,7 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
+			persistentUpdate = false;
 			if (FlxG.keys.pressed.SHIFT){
 				LoadingState.loadAndSwitchState(new ChartingState());
 			}else{
