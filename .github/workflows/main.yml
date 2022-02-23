@@ -33,6 +33,10 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
+          haxelib install echo 4.1.0 
+          haxelib install slick_addons 1.4.0 
+          haxelib install react-router-4 0.2.8 
+          haxelib install redistHelper 0.5.3 
           haxelib install lime
           haxelib install newgrounds
           haxelib install modular 0.14.0 
@@ -77,6 +81,10 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
+          haxelib install echo 4.1.0 
+          haxelib install slick_addons 1.4.0 
+          haxelib install react-router-4 0.2.8 
+          haxelib install redistHelper 0.5.3 
           haxelib install lime
           haxelib install newgrounds
           haxelib install modular 0.14.0
@@ -122,6 +130,10 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
+          haxelib install echo 4.1.0 
+          haxelib install slick_addons 1.4.0 
+          haxelib install react-router-4 0.2.8 
+          haxelib install redistHelper 0.5.3 
           haxelib install lime
           haxelib install newgrounds
           haxelib install modular 0.14.0
