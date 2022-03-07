@@ -161,7 +161,7 @@ class PlayState extends MusicBeatState
 	
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
-	private var startingSong:Bool = false;
+	public var startingSong:Bool = false;
 	private var updateTime:Bool = true;
 	public static var changedDifficulty:Bool = false;
 	public static var chartingMode:Bool = false;
@@ -1129,7 +1129,9 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 			seenCutscene = true;
-		} else {
+		}
+ 		else
+ 		{
 			startCountdown();
 		}
 		RecalculateRating();
@@ -1463,6 +1465,7 @@ class PlayState extends MusicBeatState
 	public var countdownReady:FlxSprite;
 	public var countdownSet:FlxSprite;
 	public var countdownGo:FlxSprite;
+	public static var startOnTime:Float = 0;
 
 	public function startCountdown():Void
 	{
@@ -1494,11 +1497,12 @@ class PlayState extends MusicBeatState
 
 			var swagCounter:Int = 0;
 
-			if (skipCountdown){
-				Conductor.songPosition = 0;
-				Conductor.songPosition -= Conductor.crochet ;
-				swagCounter = 3;
+			if (skipCountdown || startOnTime > 0) {
+ 				clearNotesBefore(startOnTime);
+ 				setSongTime(startOnTime - 500);
+ 				return;
 			}
+			
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 			{
 				if (tmr.loopsLeft % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
