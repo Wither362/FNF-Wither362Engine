@@ -1497,12 +1497,11 @@ class PlayState extends MusicBeatState
 
 			var swagCounter:Int = 0;
 
-			if (skipCountdown || startOnTime > 0) {
- 				clearNotesBefore(startOnTime);
- 				setSongTime(startOnTime - 500);
- 				return;
+			if (skipCountdown) {
+ 				Conductor.songPosition = 0;
+ 				Conductor.songPosition -= Conductor.crochet ;
+ 				swagCounter = 3;
 			}
-			
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 			{
 				if (tmr.loopsLeft % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
