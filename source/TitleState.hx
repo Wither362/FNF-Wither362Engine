@@ -453,10 +453,10 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		if (pressedEnter && !skippedIntro)
+		/*if (pressedEnter && !skippedIntro)
 		{
 			skipIntro();
-		}
+		}*/
 
 		if(swagShader != null)
 		{
@@ -590,7 +590,7 @@ class TitleState extends MusicBeatState
 				// credTextShit.text += '\nNewgrounds';
 				case 16:
 					deleteCoolText();
-					ngSpr.visible = false;
+					wrSpr.visible = false;
 				// credTextShit.visible = false;
 
 				// credTextShit.text = 'Shoutouts Tom Fulp';
@@ -616,8 +616,9 @@ class TitleState extends MusicBeatState
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
 
 				case 23:
-					addMoreText('Please like it');
-				
+					deleteCoolText();
+					createCoolText(['Please like it']);
+					addMoreText('It took me years');
 				case 24:
 					skipIntro();
 			}
@@ -630,6 +631,7 @@ class TitleState extends MusicBeatState
 		if (!skippedIntro)
 		{
 			remove(ngSpr);
+			remove(wrSpr);
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
