@@ -43,8 +43,8 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		optionsArray.push(goption);
 
 		var option:GameplayOption = new GameplayOption('Scroll Speed', 'scrollspeed', 'float', 1);
-		option.scrollSpeed = 1.5;
-		option.minValue = 0.5;
+		option.scrollSpeed = 10.5;
+		option.minValue = 0.01;
 		if (FlxG.keys.pressed.SHIFT) {
 			option.changeValue = 1.0;
 		} else {
@@ -53,12 +53,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		if (goption.getValue() != "constant")
 		{
 			option.displayFormat = '%vX';
-			option.maxValue = 3;
+			option.maxValue = 10;
 		}
 		else
 		{
 			option.displayFormat = "%v";
-			option.maxValue = 6;
+			option.maxValue = 10;
 		}
 		optionsArray.push(option);
 
@@ -73,16 +73,24 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', 'float', 1);
 		option.scrollSpeed = 2.5;
 		option.minValue = 0;
-		option.maxValue = 5;
-		option.changeValue = 0.1;
+		option.maxValue = 10;
+		if (FlxG.keys.pressed.SHIFT) {
+			option.changeValue = 1.0;
+		} else {
+			option.changeValue = 0.1;
+		}
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
 		var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', 'float', 1);
 		option.scrollSpeed = 2.5;
 		option.minValue = 0.5;
-		option.maxValue = 5;
-		option.changeValue = 0.1;
+		option.maxValue = 10;
+		if (FlxG.keys.pressed.SHIFT) {
+			option.changeValue = 1.0;
+		} else {
+			option.changeValue = 0.1;
+		}
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
