@@ -27,6 +27,7 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	public static var moreThings:Bool = false;
+	public static var spanish:Bool = false;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
@@ -105,6 +106,7 @@ class ClientPrefs {
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.moreThings = moreThings;
+		FlxG.save.data.spanish = spanish;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
 		FlxG.save.data.timeBarType = timeBarType;
@@ -147,6 +149,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.moreThings != null) {
 			moreThings = FlxG.save.data.moreThings;
+		}
+		if(FlxG.save.data.spanish != null) {
+			spanish = FlxG.save.data.spanish;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
