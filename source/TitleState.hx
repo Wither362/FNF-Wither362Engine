@@ -600,6 +600,14 @@ class TitleState extends MusicBeatState
 					if(ClientPrefs.spanish) createCoolText(['Espero que te guste']) else createCoolText(['Please like it']);
 					if(ClientPrefs.spanish) addMoreText('Me ha costado mucho') else addMoreText('It took me years');
 				case 24:
+					deleteCoolText();
+				case 26:
+					if(ClientPrefs.spanish) {
+					createCoolText(['If you want this in english']);
+                                        addMoreText('Disable the spanish option');} else {
+                                        createCoolText(['Si lo quieres en espanol']);
+					addMoreText('Activa la opción en opciones');}
+				case 27:
 					skipIntro();
 			}
 		}
