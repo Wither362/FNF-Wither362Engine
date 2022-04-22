@@ -113,9 +113,9 @@ class TitleState extends MusicBeatState
 			{
 				updateVersion = data.split('\n')[0].trim();
 				var curVersion:String = MainMenuState.psychEngineVersion.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				if(ClientPrefs.spanish) trace('versión online: ' + updateVersion + ', tu versión: ' + curVersion) else trace('version online: ' + updateVersion + ', your version: ' + curVersion);
 				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
+					if(ClientPrefs.spanish) trace('las versiones no cuadran!') else trace('versions arent matching!');
 					mustUpdate = true;
 				}
 			}
@@ -337,7 +337,7 @@ class TitleState extends MusicBeatState
 
 	function getIntroTextShit():Array<Array<String>>
 	{
-		var fullText:String = Assets.getText(Paths.txt('introText'));
+		var fullText:String = if(ClientPrefs.spanish) Assets.getText(Paths.txt('textoDelPrincipio')) else Assets.getText(Paths.txt('introText'));
 
 		var firstArray:Array<String> = fullText.split('\n');
 		var swagGoodArray:Array<Array<String>> = [];
