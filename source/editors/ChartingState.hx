@@ -315,19 +315,24 @@ class ChartingState extends MusicBeatState
 		dummyArrow = new FlxSprite().makeGraphic(GRID_SIZE, GRID_SIZE);
 		add(dummyArrow);
 
-		var tabs = if (ClientPrefs.spanish) {[
-			{name: "Canción", label: 'Song'},
-			{name: "Sección", label: 'Section'},
-			{name: "Note", label: 'Note'},
-			{name: "Eventos", label: 'Events'},
+		private var ca:String = if(ClientPrefs.spanish) "Canción" else "Song";
+		private var se:String = if(ClientPrefs.spanish) "Sección" else "Section";
+		private var no:String = if(ClientPrefs.spanish) "Notas" else "Note";
+		private var ev:String = if(ClientPrefs.spanish) "Eventos" else "Events";
+		var tabs = [
+			{name: ca, label: 'Song'}, 
+			{name: se, label: 'Section'}, 
+			{name: no, label: 'Note'}, 
+			{name: ev, label: 'Events'}, 
 			{name: "Charting", label: 'Charting'},
-		]} else {[
+		];
+		/*] else [
 			{name: "Song", label: 'Song'},
 			{name: "Section", label: 'Section'},
 			{name: "Note", label: 'Note'},
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
-		]};
+		];*/
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
