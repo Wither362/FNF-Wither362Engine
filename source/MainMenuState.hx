@@ -40,9 +40,9 @@ class MainMenuState extends MusicBeatState
 		#if !switch 'donate', #end
 		'options'
 	];
-	/*if (ClientPrefs.moreThings == true) {
-		optionShit.insert;
-	}*/
+	if (ClientPrefs.moreThings == true) {
+		optionShit.insert(pos:2, x:'mods'):Void;
+	}
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
