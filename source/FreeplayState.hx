@@ -203,10 +203,10 @@ class FreeplayState extends MusicBeatState
 		add(textBG);
 
 		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = if(ClientPrefs.spanish) "Pulsa ESPACIO para escuchar la canción / Pulsa CTRL para ser GILIPOLLAS / Pulsa RESET para resetear tu score y acuracy." else "Press SPACE to listen to the Song / Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
 		var size:Int = 16;
 		#else
-		var leText:String = "Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = if(ClientPrefs.spanish) "Pulsa CTRL para ser GILIPOLLAS / Pulsa RESET para resetear tu score y acuracy." else "Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
 		var size:Int = 18;
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
@@ -269,8 +269,8 @@ class FreeplayState extends MusicBeatState
 		while(ratingSplit[1].length < 2) { //Less than 2 decimals in it, add decimals then
 			ratingSplit[1] += '0';
 		}
-
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		
+		scoreText.text = if(ClientPrefs.spanish) 'MEJOR PUNTUAJE: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)' else 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
@@ -375,7 +375,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 
-			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+			if(ClientPrefs.spanish) trace('WEEK ACTUAL: ' + WeekData.getWeekFileName()) else trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
