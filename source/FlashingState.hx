@@ -28,10 +28,10 @@ class FlashingState extends MusicBeatState
                         A LOT OF TIME! SO IT WILL HAVE BUGS\n
                         MY DISCORD: Wither#978 PLEASE TAKE IT IN MIND\n
                         Also, this mod contains flashing lights\n
-                        press ESCAPE to ignore and ENTER to disable them\n
+                        press ESCAPE to ignore and ENTER to go to the options\n
                         And also this mod contains\n
                         BAD WORDS\n
-                        BE CAREFUL",
+                        BE CAREFUL, SI LO QUIERES EN ESPAÑOL,\n VE A LAS OPCIONES",
 			26);
 		warnText.setFormat("VCR OSD Mono", 26, FlxColor.RED, CENTER);
 		warnText.screenCenter(Y);
