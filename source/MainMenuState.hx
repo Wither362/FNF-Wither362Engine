@@ -23,6 +23,8 @@ import flixel.input.keyboard.FlxKey;
 
 using StringTools;
 
+var modsAsa = if (ClientPrefs.moreThings == true) 'mods' else null;
+
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.7.1-git'; //This is also used for Discord RPC
@@ -35,14 +37,12 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
+		modsAsa,
 		#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
 		#if !switch 'donate', #end
 		'options'
 	];
-	if (ClientPrefs.moreThings == true) {
-		optionShit.insert(pos:2, x:'mods'):Void;
-	}
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
