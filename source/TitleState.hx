@@ -524,49 +524,33 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Psych Engine by'], 15);
-					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-					#end
+					if(ClientPrefs.spanish == true) createCoolText(['Psych Engine hecho por'], 15) else createCoolText(['Psych Engine by'], 15);
 				// credTextShit.visible = true;
-				case 3: //valor anterior +2
-					#if PSYCH_WATERMARKS
+				case 2: //valor anterior +2
 					addMoreText('Shadow Mario', 15);
 					addMoreText('RiverOaken', 15);
 					addMoreText('bb-panzu', 15);
-					#else
-					addMoreText('present');
-					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 4:
+				case 3:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 5:
-					#if PSYCH_WATERMARKS
-					createCoolText(['But modificated by'], 15);
-					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-					#end
+				case 4:
+					if(ClientPrefs.spanish) createCoolText(['Pero modificado por'], 15) else createCoolText(['But modificated by'], 15);
 				// credTextShit.visible = true;
-				case 7: //anterior valor +2
+				case 5: //anterior valor +2
 					addMoreText('Wither362', 15);
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 8:
+				case 6:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
 				case 9: //cosa de newgrounds
-					#if PSYCH_WATERMARKS 
-					createCoolText(['A mod made with', 'help of'], -40);
-					#else
-					createCoolText(['A mod made with', 'help of'], -40);
-					#end
+					if(ClientPrefs.spanish) createCoolText(['Un mod hecho con', 'ayuda de'], -40) else createCoolText(['A mod made with', 'help of'], -40);
 				case 11: //valor anterior +2
 					addMoreText('Wentuj', -40);
 					ngSpr.visible = true;
@@ -579,11 +563,7 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
 				case 13: //otra vez lo de newgrounds
-					#if PSYCH_WATERMARKS
-					createCoolText(['A mod made', 'by'], -40);
-					#else
-					createCoolText(['A mod made', 'by'], -40);
-					#end
+					if(ClientPrefs.spanish) createCoolText(['Un mod hecho', 'por'], -40) else createCoolText(['A mod made', 'by'], -40);
 				case 15: //valor anterior +2
 					addMoreText('Witherplays362', -40);
 					wrSpr.visible = true;
@@ -617,8 +597,8 @@ class TitleState extends MusicBeatState
 
 				case 23:
 					deleteCoolText();
-					createCoolText(['Please like it']);
-					addMoreText('It took me years');
+					if(ClientPrefs.spanish) createCoolText(['Espero que te guste']) else createCoolText(['Please like it']);
+					if(ClientPrefs.spanish) addMoreText('Me ha costado mucho') else addMoreText('It took me years');
 				case 24:
 					skipIntro();
 			}
