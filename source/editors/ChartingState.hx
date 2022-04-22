@@ -315,15 +315,15 @@ class ChartingState extends MusicBeatState
 		dummyArrow = new FlxSprite().makeGraphic(GRID_SIZE, GRID_SIZE);
 		add(dummyArrow);
 
-		private var ca:String = if(ClientPrefs.spanish) "Canción" else "Song";
-		private var se:String = if(ClientPrefs.spanish) "Sección" else "Section";
-		private var no:String = if(ClientPrefs.spanish) "Notas" else "Note";
-		private var ev:String = if(ClientPrefs.spanish) "Eventos" else "Events";
+		var cahahah:String = if(ClientPrefs.spanish) "Canción" else "Song";
+		var sehahah:String = if(ClientPrefs.spanish) "Sección" else "Section";
+		var nohahah:String = if(ClientPrefs.spanish) "Notas" else "Note";
+		var evhahah:String = if(ClientPrefs.spanish) "Eventos" else "Events";
 		var tabs = [
-			{name: ca, label: 'Song'}, 
-			{name: se, label: 'Section'}, 
-			{name: no, label: 'Note'}, 
-			{name: ev, label: 'Events'}, 
+			{name: cahahah, label: 'Song'}, 
+			{name: sehahah, label: 'Section'}, 
+			{name: nohahah, label: 'Note'}, 
+			{name: evhahah, label: 'Events'}, 
 			{name: "Charting", label: 'Charting'},
 		];
 		/*] else [
