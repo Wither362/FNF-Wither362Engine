@@ -131,6 +131,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		  'bool',
 		  false);
 		addOption(option);
+		
+		var option:Option = new Option('In Spanish',
+			'Cambia el idioma a espanol\nsi no sabes ingles.',
+			'spanish',
+			'bool',
+			false);
+		addOption(option);
 
 		var option:Option = new Option('Safe Frames',
 			'Changes how many frames you have for\nhitting a note earlier or late.',
