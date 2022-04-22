@@ -161,22 +161,16 @@ class ChartingState extends MusicBeatState
 		8,
 		12,
 		16,
-		24,
-		48
+		24
 	];
 	#else //The grid gets all black when over 1/12 snap
 	var zoomList:Array<Float> = [
-		0.25,
 		0.5,
 		1,
 		2,
-		3,
 		4,
 		8,
-		12,
-		24,
-		48,
-		96
+		12
 	];
 	#end
 
@@ -321,24 +315,13 @@ class ChartingState extends MusicBeatState
 		dummyArrow = new FlxSprite().makeGraphic(GRID_SIZE, GRID_SIZE);
 		add(dummyArrow);
 
-		var cahahah:String = if(ClientPrefs.spanish) "Canción" else "Song";
-		var sehahah:String = if(ClientPrefs.spanish) "Sección" else "Section";
-		var nohahah:String = if(ClientPrefs.spanish) "Notas" else "Note";
-		var evhahah:String = if(ClientPrefs.spanish) "Eventos" else "Events";
 		var tabs = [
-			{name: cahahah, label: 'Song'}, 
-			{name: sehahah, label: 'Section'}, 
-			{name: nohahah, label: 'Note'}, 
-			{name: evhahah, label: 'Events'}, 
-			{name: "Charting", label: 'Charting'},
-		];
-		/*] else [
 			{name: "Song", label: 'Song'},
 			{name: "Section", label: 'Section'},
 			{name: "Note", label: 'Note'},
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
-		];*/
+		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
@@ -347,7 +330,7 @@ class ChartingState extends MusicBeatState
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
-		text = if(ClientPrefs.spanish) "W/S o RUEDA DEL MOUSE - Cambiar visión del strum time\nA o Izquierda/D o Derecha - Ir a la siguiente/anterior sección\nMantén pulsado SHIFT para mover 4x más rápido\nMantén pulsado CONTROL y pulsa sobre una nota para seleccionarla\nZ/X - más/menos zoom\n\nESC para probar tu chart\nENTER para jugar tu chart\nQ/E - Ampliar/desampliar la longitud de la nota seleccionada\nESPACIO - Parar/continuar canción" else
+		text =
 		"W/S or Mouse Wheel - Change Conductor's strum time
 		\nA or Left/D or Right - Go to the previous/next section
 		\nHold Shift to move 4x faster
@@ -436,9 +419,7 @@ class ChartingState extends MusicBeatState
 			updateWaveform();
 		});
 
-		var reloadSongJson:FlxButton = if(ClientPrefs.spanish) new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function() {
-			openSubState(new Prompt('Esta acción eliminará todo el progreso no guardado.\n\nProceder?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
-		}) else new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
+		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
 			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
