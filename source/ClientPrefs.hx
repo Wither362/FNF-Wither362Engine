@@ -31,6 +31,8 @@ class ClientPrefs {
 	
 	public static var spanish:Bool = false;
 	
+	public static var otherLink:Bool = true;
+	
 	public static var reloadWarning:Bool = true;
 	public static var reloadEventWarning:Bool = true;
 	public static var clearNotesWarning:Bool = true;
@@ -107,6 +109,7 @@ class ClientPrefs {
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
+		FlxG.save.data.otherLink = otherLink;
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
@@ -147,6 +150,9 @@ class ClientPrefs {
 	}
 
 	public static function loadPrefs() {
+		if(FlxG.save.data.otherLink != null) {
+			otherLink = FlxG.save.data.otherLink;
+		}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}
