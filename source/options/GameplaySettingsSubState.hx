@@ -70,6 +70,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Wither362 Link',
+			"If checked, clicking in Donate will send you\nto the Wither362 link.",
+			'otherLink',
+			'bool',
+			true);
+		addOption(option);
+		
 		var option:Option = new Option('Clear Notes Warning',
 			"If disabled, pressing Clear Notes won't warn you.",
 			'clearNotesWarning',
