@@ -70,6 +70,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Reload JSON Warning',
+			"If disabled, when you press Reload JSON won't warn you.",
+			'reloadWarning',
+			'bool',
+			true);
+		addOption(option);
 		/*var option:Option = new Option('Note Delay',
 			'Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.',
 			'noteOffset',
