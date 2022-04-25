@@ -1005,7 +1005,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "IT'S FUCKING CHEATING", 32);
+		botplayTxt = if(ClientPrefs.badWords) new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "IT'S FUCKING CHEATING", 32) else new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "FREAKING BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
