@@ -83,6 +83,14 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'bool',
 			true);
 		addOption(option);
+		
+		var option:Option = new Option('Bad Words',
+			"If disabled, there aren't gonna be bad words",
+			'badWords',
+			'bool',
+			true);
+		addOption(option);
+		
 		/*var option:Option = new Option('Note Delay',
 			'Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.',
 			'noteOffset',
