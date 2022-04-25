@@ -1,4 +1,14 @@
-# Friday Night Funkin' - Wither362 Engine
+# Wither362 Engine
+An engine that have extra options, takes .lua.txt files and take them like they were lua files, there are't any original songs except tutorial, so this engine was made for custom songs
+
+
+
+
+
+
+
+things of the original engine:
+# Friday Night Funkin' - Psych Engine
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
 ## Installation:
