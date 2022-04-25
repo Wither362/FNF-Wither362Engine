@@ -203,7 +203,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					CoolUtil.browserLoad('https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw');
+					if(ClientPrefs.otherLink) CoolUtil.browserLoad('https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw') else CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
 				}
 				else
 				{
