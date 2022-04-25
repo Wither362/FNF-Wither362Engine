@@ -33,6 +33,7 @@ class ClientPrefs {
 	
 	public static var reloadWarning:Bool = true;
 	public static var reloadEventWarning:Bool = true;
+	public static var clearNotesWarning:Bool = true;
 	
 	public static var badWords:Bool = true;
 	public static var healthBarAlpha:Float = 1;
@@ -114,6 +115,7 @@ class ClientPrefs {
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.reloadWarning = reloadWarning;
 		FlxG.save.data.reloadEventWarning = reloadEventWarning;
+		FlxG.save.data.clearNotesWarning = clearNotesWarning;
 		FlxG.save.data.badWords = badWords;
 		FlxG.save.data.moreThings = moreThings;
 		FlxG.save.data.spanish = spanish;
@@ -171,6 +173,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.reloadEventWarning != null) {
 			reloadEventWarning = FlxG.save.data.reloadEventWarning;
+		}
+		if(FlxG.save.data.clearNotesWarning != null) {
+			clearNotesWarning = FlxG.save.data.clearNotesWarning;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
