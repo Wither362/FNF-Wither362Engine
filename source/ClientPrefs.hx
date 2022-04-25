@@ -28,6 +28,7 @@ class ClientPrefs {
 	public static var noReset:Bool = false;
 	public static var moreThings:Bool = false;
 	public static var spanish:Bool = false;
+	public static var reloadWarning:Bool = true;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
@@ -152,6 +153,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.spanish != null) {
 			spanish = FlxG.save.data.spanish;
+		}
+		if(FlxG.save.data.reloadWarning != null) {
+			reloadWarning = FlxG.save.data.reloadWarning;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
