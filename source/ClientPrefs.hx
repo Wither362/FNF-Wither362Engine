@@ -26,9 +26,15 @@ class ClientPrefs {
 	public static var timeBarType:String = 'Time Left';
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
+	
 	public static var moreThings:Bool = false;
+	
 	public static var spanish:Bool = false;
+	
 	public static var reloadWarning:Bool = true;
+	public static var reloadEventWarning:Bool = true;
+	
+	public static var badWords:Bool = true;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
@@ -106,6 +112,9 @@ class ClientPrefs {
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
+		FlxG.save.data.reloadWarning = reloadWarning;
+		FlxG.save.data.reloadEventWarning = reloadEventWarning;
+		FlxG.save.data.badWords = badWords;
 		FlxG.save.data.moreThings = moreThings;
 		FlxG.save.data.spanish = spanish;
 		FlxG.save.data.imagesPersist = imagesPersist;
@@ -154,8 +163,14 @@ class ClientPrefs {
 		if(FlxG.save.data.spanish != null) {
 			spanish = FlxG.save.data.spanish;
 		}
+		if(FlxG.save.data.badWords != null) {
+			badWords = FlxG.save.data.badWords;
+		}
 		if(FlxG.save.data.reloadWarning != null) {
 			reloadWarning = FlxG.save.data.reloadWarning;
+		}
+		if(FlxG.save.data.reloadEventWarning != null) {
+			reloadEventWarning = FlxG.save.data.reloadEventWarning;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
