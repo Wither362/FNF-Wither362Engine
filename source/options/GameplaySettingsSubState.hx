@@ -70,8 +70,15 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
-		var option:Option = new Option('Reload Events Warning',
-			"If disabled, pressing Reload Events won't warn you.",
+		var option:Option = new Option('Clear Notes Warning',
+			"If disabled, pressing Clear Notes won't warn you.",
+			'clearNotesWarning',
+			'bool',
+			true);
+		addOption(option);
+		
+		var option:Option = new Option('Clear Events Warning',
+			"If disabled, pressing Clear Events won't warn you.",
 			'reloadEventWarning',
 			'bool',
 			true);
