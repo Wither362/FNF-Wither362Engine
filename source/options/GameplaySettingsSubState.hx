@@ -70,8 +70,15 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Reload Events Warning',
+			"If disabled, pressing Reload Events won't warn you.",
+			'reloadEventWarning',
+			'bool',
+			true);
+		addOption(option);
+		
 		var option:Option = new Option('Reload JSON Warning',
-			"If disabled, when you press Reload JSON won't warn you.",
+			"If disabled, pressing Reload JSON won't warn you.",
 			'reloadWarning',
 			'bool',
 			true);
