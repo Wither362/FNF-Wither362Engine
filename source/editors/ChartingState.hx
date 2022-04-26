@@ -156,12 +156,25 @@ class ChartingState extends MusicBeatState
 	var zoomList:Array<Float> = [
 		0.5,
 		1,
+		1.5,
 		2,
+		2.5,
+		3,
 		4,
+		5,
+		6,
+		7,
 		8,
+		9,
+		10,
+		11,
 		12,
+		13,
+		14,
+		15,
 		16,
-		24
+		24,
+		48
 	];
 	#else //The grid gets all black when over 1/12 snap
 	var zoomList:Array<Float> = [
@@ -1099,12 +1112,12 @@ class ChartingState extends MusicBeatState
 			curEventSelected += change;
 			if(curEventSelected < 0) curEventSelected = Std.int(curSelectedNote[1].length) - 1;
 			else if(curEventSelected >= curSelectedNote[1].length) curEventSelected = 0;
-			selectedEventText.text = 'Selected Event: ' + (curEventSelected + 1) + ' / ' + curSelectedNote[1].length;
+			selectedEventText.text = if(ClientPrefs.badWords) 'Selected Fucking Event: ' + (curEventSelected + 1) + ' / ' + curSelectedNote[1].length else 'Selected Event: ' + (curEventSelected + 1) + ' / ' + curSelectedNote[1].length;
 		}
 		else
 		{
 			curEventSelected = 0;
-			selectedEventText.text = 'Selected Event: None';
+			selectedEventText.text = if(ClientPrefs.badWords) 'Selected Event: Fucking Any' else 'Selected Event: None';
 		}
 		updateNoteUI();
 	}
@@ -1141,7 +1154,7 @@ class ChartingState extends MusicBeatState
 			updateWaveform();
 		};
 
-		waveformUseInstrumental = new FlxUICheckBox(waveformEnabled.x + 120, waveformEnabled.y, null, null, "Waveform for Instrumental", 100);
+		waveformUseInstrumental = if(ClientPrefs.badWords) new FlxUICheckBox(waveformEnabled.x + 120, waveformEnabled.y, null, null, "Waveform for Fucking Instrumental", 100) else new FlxUICheckBox(waveformEnabled.x + 120, waveformEnabled.y, null, null, "Waveform for Instrumental", 100);
 		waveformUseInstrumental.checked = false;
 		waveformUseInstrumental.callback = function()
 		{
@@ -1149,7 +1162,7 @@ class ChartingState extends MusicBeatState
 		};
 		#end
 
-		check_mute_inst = new FlxUICheckBox(10, 310, null, null, "Mute Instrumental (in editor)", 100);
+		check_mute_inst = if(ClientPrefs.badWords) new FlxUICheckBox(10, 310, null, null, "Mute Fucking Instrumental (in fucking editor)", 100) else new FlxUICheckBox(10, 310, null, null, "Mute Instrumental (in editor)", 100);
 		check_mute_inst.checked = false;
 		check_mute_inst.callback = function()
 		{
