@@ -203,10 +203,10 @@ class FreeplayState extends MusicBeatState
 		add(textBG);
 
 		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = if(ClientPrefs.badWords) "Press SPACE to listen to the Song / Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy." else "Press SPACE to listen to the Song / Press CTRL to be FREAKING BAD / Press RESET to Reset your Score and Accuracy.";
 		var size:Int = 16;
 		#else
-		var leText:String = "Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = if(ClientPrefs.badWords) "Press CTRL to be FUCKING BAD / Press RESET to Reset your Score and Accuracy." else "Press CTRL to be FREAKING BAD / Press RESET to Reset your Score and Accuracy.";
 		var size:Int = 18;
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
