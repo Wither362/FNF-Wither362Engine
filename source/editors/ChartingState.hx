@@ -343,8 +343,18 @@ class ChartingState extends MusicBeatState
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
-		text =
-		"W/S or Mouse Wheel - Change Conductor's strum time
+		text = if(ClientPrefs.badWords)
+		"W/S or Mouse Wheel - Change Fucking Conductor's strum time
+		\nA or Left/D or Right - Go to the fucking previous/next fucking section
+		\nHold Shift to fucking move 4x faster
+		\nHold Control and click on a fucking arrow to fucking select it
+		\nZ/X - Zoom in/out
+		\n
+		\nEsc - Test your chart inside Chart Editor
+		\nEnter - Play your chart
+		\nQ/E - Decrease/Increase Note Sustain Length
+		\nSpace - Stop/Resume fucking song
+		\nMax bpm is 100000 and max scroll speed is 1000" else "W/S or Mouse Wheel - Change Conductor's strum time
 		\nA or Left/D or Right - Go to the previous/next section
 		\nHold Shift to move 4x faster
 		\nHold Control and click on an arrow to select it
@@ -353,7 +363,8 @@ class ChartingState extends MusicBeatState
 		\nEsc - Test your chart inside Chart Editor
 		\nEnter - Play your chart
 		\nQ/E - Decrease/Increase Note Sustain Length
-		\nSpace - Stop/Resume song";
+		\nSpace - Stop/Resume song
+		\nMax bpm is 100000 and max scroll speed is 1000";
 
 		var tipTextArray:Array<String> = text.split('\n');
 		for (i in 0...tipTextArray.length) {
@@ -434,7 +445,16 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			if(ClientPrefs.reloadWarning) openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
+			if(ClientPrefs.reloadWarning)
+			{
+				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){
+					loadJson(_song.song.toLowerCase()); 
+				}, null,ignoreWarnings));
+			} else {
+				function(){
+					loadJson(_song.song.toLowerCase());
+				}
+			}
 		});
 
 		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
@@ -468,16 +488,25 @@ class ChartingState extends MusicBeatState
 
 		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
 			{
-				if(ClientPrefs.reloadEventWarning) openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
+				if(ClientPrefs.reloadEventWarning)
+				{
+					openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
+				} else {
+					clearEvents;
+				}
 			});
 		clear_events.color = FlxColor.RED;
 		clear_events.label.color = FlxColor.WHITE;
 
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
 			{
-				if(ClientPrefs.clearNotesWarning) openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
-					_song.notes[sec].sectionNotes = [];
-				}
+				if(ClientPrefs.clearNotesWarning)
+				{
+					openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){
+						for (sec in 0..._song.notes.length) {
+							_song.notes[sec].sectionNotes = [];
+						}
+				} else {function(){
 				updateGrid();
 			}, null,ignoreWarnings));
 				
