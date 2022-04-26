@@ -28,6 +28,7 @@ class ClientPrefs {
 	public static var noReset:Bool = false;
 	
 	public static var moreThings:Bool = false;
+	public static var chartingActivated = false;
 	
 	public static var spanish:Bool = false;
 	
@@ -121,6 +122,7 @@ class ClientPrefs {
 		FlxG.save.data.clearNotesWarning = clearNotesWarning;
 		FlxG.save.data.badWords = badWords;
 		FlxG.save.data.moreThings = moreThings;
+		FlxG.save.data.chartingActivated = chartingActivated;
 		FlxG.save.data.spanish = spanish;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
@@ -173,6 +175,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.badWords != null) {
 			badWords = FlxG.save.data.badWords;
+		}
+		if(FlxG.save.data.chartingActivated != null) {
+			chartingActivated = FlxG.save.data.chartingActivated;
 		}
 		if(FlxG.save.data.reloadWarning != null) {
 			reloadWarning = FlxG.save.data.reloadWarning;
