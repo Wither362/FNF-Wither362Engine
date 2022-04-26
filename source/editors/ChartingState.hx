@@ -541,7 +541,7 @@ class ChartingState extends MusicBeatState
 		#if MODS_ALLOWED
 		for (i in 0...directories.length) {
 			var directory:String = directories[i];
-			if(FileSystem.exists(directory)) {
+			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
 					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json') || file.endsWith('.txt'))) #else file.endsWith('.json')) #end {
@@ -564,8 +564,7 @@ class ChartingState extends MusicBeatState
 		player1DropDown.selectedLabel = _song.player1;
 		blockPressWhileScrolling.push(player1DropDown);
 
-		var player3DropDown = new FlxUIDropDownMenuCustom(player1DropDown.x, player1DropDown.y + 40, FlxUIDropDownMenuCustom.makeStrIdLabelArray(characters, true), function(character:String)
-		{
+		var player3DropDown = new FlxUIDropDownMenuCustom(player1DropDown.x, player1DropDown.y + 40, FlxUIDropDownMenuCustom.makeStrIdLabelArray(characters, true), function(character:String) {
 			_song.gfVersion = characters[Std.parseInt(character)];
 			updateHeads();
 		});
@@ -591,7 +590,7 @@ class ChartingState extends MusicBeatState
 		var stages:Array<String> = [];
 		for (i in 0...stageFile.length) { //Prevent duplicates
 			var stageToCheck:String = stageFile[i];
-			if(!tempMap.exists(stageToCheck)) {
+			if (!tempMap.exists(stageToCheck)) {
 				stages.push(stageToCheck);
 			}
 			tempMap.set(stageToCheck, true);
@@ -599,12 +598,12 @@ class ChartingState extends MusicBeatState
 		#if MODS_ALLOWED
 		for (i in 0...directories.length) {
 			var directory:String = directories[i];
-			if(FileSystem.exists(directory)) {
+			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
 					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.txt') || file.endsWith('.json')) #else file.endsWith('.json') #end) {
 						var stageToCheck:String = file.substr(0, file.length - 5);
-						if(!tempMap.exists(stageToCheck)) {
+						if (!tempMap.exists(stageToCheck)) {
 							tempMap.set(stageToCheck, true);
 							stages.push(stageToCheck);
 						}
@@ -710,7 +709,7 @@ class ChartingState extends MusicBeatState
 		check_changeBPM.name = 'check_changeBPM';
 
 		stepperSectionBPM = new FlxUINumericStepper(10, 110, 1, Conductor.bpm, 0, 999, 1);
-		if(check_changeBPM.checked) {
+		if (check_changeBPM.checked) {
 			stepperSectionBPM.value = _song.notes[curSection].bpm;
 		} else {
 			stepperSectionBPM.value = Conductor.bpm;
@@ -723,8 +722,7 @@ class ChartingState extends MusicBeatState
 		{
 			notesCopied = [];
 			sectionToCopy = curSection;
-			for (i in 0..._song.notes[curSection].sectionNotes.length)
-			{
+			for (i in 0..._song.notes[curSection].sectionNotes.length) {
 				var note:Array<Dynamic> = _song.notes[curSection].sectionNotes[i];
 				notesCopied.push(note);
 			}
@@ -734,7 +732,7 @@ class ChartingState extends MusicBeatState
 			for (event in _song.events)
 			{
 				var strumTime:Float = event[0];
-				if(endThing > event[0] && event[0] >= startThing)
+				if (endThing > event[0] && event[0] >= startThing)
 				{
 					var copiedEventArray:Array<Dynamic> = [];
 					for (i in 0...event[1].length)
@@ -747,10 +745,8 @@ class ChartingState extends MusicBeatState
 			}
 		});
 
-		var pasteButton:FlxButton = new FlxButton(10, 180, "Paste Section", function()
-		{
-			if(notesCopied == null || notesCopied.length < 1)
-			{
+		var pasteButton:FlxButton = new FlxButton(10, 180, "Paste Section", function() {
+			if(notesCopied == null || notesCopied.length < 1) {
 				return;
 			}
 
@@ -761,19 +757,15 @@ class ChartingState extends MusicBeatState
 			{
 				var copiedNote:Array<Dynamic> = [];
 				var newStrumTime:Float = note[0] + addToTime;
-				if(note[1] < 0)
-				{
+				if (note[1] < 0) {
 					var copiedEventArray:Array<Dynamic> = [];
-					for (i in 0...note[2].length)
-					{
+					for (i in 0...note[2].length) {
 						var eventToPush:Array<Dynamic> = note[2][i];
 						copiedEventArray.push([eventToPush[0], eventToPush[1], eventToPush[2]]);
 					}
 					_song.events.push([newStrumTime, copiedEventArray]);
-				}
-				else
-				{
-					if(note[4] != null) {
+				} else {
+					if (note[4] != null) {
 						copiedNote = [newStrumTime, note[1], note[2], note[3], note[4]];
 					} else {
 						copiedNote = [newStrumTime, note[1], note[2], note[3]];
@@ -792,10 +784,9 @@ class ChartingState extends MusicBeatState
 			
 			var startThing:Float = sectionStartTime();
 			var endThing:Float = sectionStartTime(1);
-			while(i > -1) {
+			while (i > -1) {
 				var event:Array<Dynamic> = _song.events[i];
-				if(event != null && endThing > event[0] && event[0] >= startThing)
-				{
+				if (event != null && endThing > event[0] && event[0] >= startThing) {
 					_song.events.remove(event);
 				}
 				--i;
@@ -821,7 +812,7 @@ class ChartingState extends MusicBeatState
 		var copyLastButton:FlxButton = new FlxButton(10, 270, "Copy last section", function()
 		{
 			var value:Int = Std.int(stepperCopy.value);
-			if(value == 0) return;
+			if (value == 0) return;
 
 			var daSec = FlxMath.maxInt(curSection, value);
 
@@ -839,7 +830,7 @@ class ChartingState extends MusicBeatState
 			for (event in _song.events)
 			{
 				var strumTime:Float = event[0];
-				if(endThing > event[0] && event[0] >= startThing)
+				if (endThing > event[0] && event[0] >= startThing)
 				{
 					strumTime += Conductor.stepCrochet * (_song.notes[daSec].lengthInSteps * value);
 					var copiedEventArray:Array<Dynamic> = [];
@@ -861,7 +852,7 @@ class ChartingState extends MusicBeatState
 				var boob = note[1];
 				if (boob>3){
 					boob -= 4;
-				}else{
+				} else {
 					boob += 4;
 				}
 				
@@ -869,8 +860,8 @@ class ChartingState extends MusicBeatState
 				duetNotes.push(copiedNote);
 			}
 			
-			for (i in duetNotes){
-			_song.notes[curSection].sectionNotes.push(i);
+			for (i in duetNotes) {
+				_song.notes[curSection].sectionNotes.push(i);
 				
 			}
 			
@@ -890,7 +881,7 @@ class ChartingState extends MusicBeatState
 				//duetNotes.push(copiedNote);
 			}
 			
-			for (i in duetNotes){
+			for (i in duetNotes) {
 			//_song.notes[curSection].sectionNotes.push(i);
 				
 			}
@@ -974,7 +965,7 @@ class ChartingState extends MusicBeatState
 		noteTypeDropDown = new FlxUIDropDownMenuCustom(10, 105, FlxUIDropDownMenuCustom.makeStrIdLabelArray(displayNameList, true), function(character:String)
 		{
 			currentType = Std.parseInt(character);
-			if(curSelectedNote != null && curSelectedNote[1] > -1) {
+			if (curSelectedNote != null && curSelectedNote[1] > -1) {
 				curSelectedNote[3] = noteTypeIntMap.get(currentType);
 				updateGrid();
 			}
@@ -1033,9 +1024,9 @@ class ChartingState extends MusicBeatState
 		eventDropDown = new FlxUIDropDownMenuCustom(20, 50, FlxUIDropDownMenuCustom.makeStrIdLabelArray(leEvents, true), function(pressed:String) {
 			var selectedEvent:Int = Std.parseInt(pressed);
 			descText.text = eventStuff[selectedEvent][1];
-				if (curSelectedNote != null &&  eventStuff != null) {
-				if (curSelectedNote != null && curSelectedNote[2] == null){
-				curSelectedNote[1][curEventSelected][0] = eventStuff[selectedEvent][0];
+			if (curSelectedNote != null &&  eventStuff != null) {
+				if (curSelectedNote != null && curSelectedNote[2] == null) {
+					curSelectedNote[1][curEventSelected][0] = eventStuff[selectedEvent][0];
 					
 				}
 				updateGrid();
@@ -1087,7 +1078,7 @@ class ChartingState extends MusicBeatState
 			
 		var addButton:FlxButton = new FlxButton(removeButton.x + removeButton.width + 10, removeButton.y, '+', function()
 		{
-			if(curSelectedNote != null && curSelectedNote[2] == null) //Is event note
+			if (curSelectedNote != null && curSelectedNote[2] == null) //Is event note
 			{
 				var eventsGroup:Array<Dynamic> = curSelectedNote[1];
 				eventsGroup.push(['', '', '']);
@@ -1138,12 +1129,15 @@ class ChartingState extends MusicBeatState
 
 	function changeEventSelected(change:Int = 0)
 	{
-		if(curSelectedNote != null && curSelectedNote[2] == null) //Is event note
+		if (curSelectedNote != null && curSelectedNote[2] == null) //Is event note
 		{
 			curEventSelected += change;
-			if(curEventSelected < 0) curEventSelected = Std.int(curSelectedNote[1].length) - 1;
-			else if(curEventSelected >= curSelectedNote[1].length) curEventSelected = 0;
-			selectedEventText.text = if(ClientPrefs.badWords) {
+			if (curEventSelected < 0) {
+				curEventSelected = Std.int(curSelectedNote[1].length) - 1;
+			} else if(curEventSelected >= curSelectedNote[1].length) {
+				curEventSelected = 0;
+			}
+			selectedEventText.text = if (ClientPrefs.badWords) {
 				'Selected Fucking Event: ' + (curEventSelected + 1) + ' / ' + curSelectedNote[1].length;
 			} else {
 				'Selected Event: ' + (curEventSelected + 1) + ' / ' + curSelectedNote[1].length;
