@@ -506,10 +506,16 @@ class ChartingState extends MusicBeatState
 						for (sec in 0..._song.notes.length) {
 							_song.notes[sec].sectionNotes = [];
 						}
-				} else {function(){
-				updateGrid();
-			}, null,ignoreWarnings));
-				
+						updateGrid();
+					}, null,ignoreWarnings));
+				} else {
+					function(){
+						for (sec in 0..._song.notes.length) {
+							_song.notes[sec].sectionNotes = [];
+						}
+						updateGrid();
+					}
+				}
 			});
 		clear_notes.color = FlxColor.RED;
 		clear_notes.label.color = FlxColor.WHITE;
@@ -542,7 +548,7 @@ class ChartingState extends MusicBeatState
 			if(FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && file.endsWith('.json')) {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json') || file.endsWith('.txt'))) #else file.endsWith('.json')) #end {
 						var charToCheck:String = file.substr(0, file.length - 5);
 						if(!charToCheck.endsWith('-dead') && !tempMap.exists(charToCheck)) {
 							tempMap.set(charToCheck, true);
