@@ -70,6 +70,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Charting Activated',
+			"If checked, the pause menu will show the chart things.",
+			'chartingActivated',
+			'bool',
+			false);
+		addOption(option);
+		
 		var option:Option = new Option('Wither362 Link',
 			"If checked, clicking in Donate will send you\nto the Wither362 link.",
 			'otherLink',
@@ -78,28 +85,28 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		
 		var option:Option = new Option('Clear Notes Warning',
-			"If disabled, pressing Clear Notes won't warn you.",
+			"If disabled, pressing Clear Notes won't warn you.\nYou will have to reset the engine.",
 			'clearNotesWarning',
 			'bool',
 			true);
 		addOption(option);
 		
 		var option:Option = new Option('Clear Events Warning',
-			"If disabled, pressing Clear Events won't warn you.",
+			"If disabled, pressing Clear Events won't warn you.\nYou will have to reset the engine.",
 			'reloadEventWarning',
 			'bool',
 			true);
 		addOption(option);
 		
 		var option:Option = new Option('Reload JSON Warning',
-			"If disabled, pressing Reload JSON won't warn you.",
+			"If disabled, pressing Reload JSON won't warn you.\nYou will have to reset the engine",
 			'reloadWarning',
 			'bool',
 			true);
 		addOption(option);
 		
 		var option:Option = new Option('Bad Words',
-			"If disabled, there aren't gonna be bad words",
+			"If disabled, there aren't gonna be bad words\nYou will have to reset the engine.",
 			'badWords',
 			'bool',
 			true);
