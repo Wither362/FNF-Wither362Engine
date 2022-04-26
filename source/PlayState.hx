@@ -317,8 +317,9 @@ class PlayState extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw = true;
 
-		if (SONG == null)
+		if (SONG == null) {
 			SONG = Song.loadFromJson('tutorial');
+		}
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -421,7 +422,7 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'spooky': //Week 2
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
 				} else {
 					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
@@ -438,7 +439,7 @@ class PlayState extends MusicBeatState
 				CoolUtil.precacheSound('thunder_2');
 
 			case 'philly': //Week 3
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					var bg:BGSprite = new BGSprite('philly/sky', -100, 0, 0.1, 0.1);
 					add(bg);
 				}
@@ -460,7 +461,7 @@ class PlayState extends MusicBeatState
 					phillyCityLights.add(light);
 				}
 
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					var streetBehind:BGSprite = new BGSprite('philly/behindTrain', -40, 50);
 					add(streetBehind);
 				}
@@ -479,7 +480,7 @@ class PlayState extends MusicBeatState
 				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
 				add(skyBG);
 
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					limoMetalPole = new BGSprite('gore/metalPole', -500, 220, 0.4, 0.4);
 					add(limoMetalPole);
 
@@ -530,7 +531,7 @@ class PlayState extends MusicBeatState
 				bg.updateHitbox();
 				add(bg);
 
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					upperBoppers = new BGSprite('christmas/upperBop', -240, -90, 0.33, 0.33, ['Upper Crowd Bob']);
 					upperBoppers.setGraphicSize(Std.int(upperBoppers.width * 0.85));
 					upperBoppers.updateHitbox();
@@ -591,7 +592,7 @@ class PlayState extends MusicBeatState
 				bgStreet.antialiasing = false;
 
 				var widShit = Std.int(bgSky.width * 6);
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					var fgTrees:BGSprite = new BGSprite('weeb/weebTreesBack', repositionShit + 170, 130, 0.9, 0.9);
 					fgTrees.setGraphicSize(Std.int(widShit * 0.8));
 					fgTrees.updateHitbox();
@@ -607,7 +608,7 @@ class PlayState extends MusicBeatState
 				add(bgTrees);
 				bgTrees.antialiasing = false;
 
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					var treeLeaves:BGSprite = new BGSprite('weeb/petals', repositionShit, -40, 0.85, 0.85, ['PETALS ALL'], true);
 					treeLeaves.setGraphicSize(widShit);
 					treeLeaves.updateHitbox();
@@ -673,9 +674,9 @@ class PlayState extends MusicBeatState
 		add(gfGroup);
 
 		// Shitty layering but whatev it works LOL
-		if (curStage == 'limo')
+	if (curStage == 'limo') {
 			add(limo);
-
+	}
 		add(dadGroup);
 		add(boyfriendGroup);
 		
@@ -709,8 +710,9 @@ class PlayState extends MusicBeatState
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, Paths.mods('scripts/'));
-		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/scripts/'));
+	if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0) {
+		foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/scripts/'));
+	}
 		#end
 
 		for (folder in foldersToCheck)
@@ -734,27 +736,28 @@ class PlayState extends MusicBeatState
 		#if (MODS_ALLOWED && LUA_ALLOWED)
 		var doPush:Bool = false;
 		var luaFile:String = 'stages/' + curStage + '.lua';
-		if(FileSystem.exists(Paths.modFolders(luaFile))) {
+		if (FileSystem.exists(Paths.modFolders(luaFile))) {
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
 			luaFile = Paths.getPreloadPath(luaFile);
-			if(FileSystem.exists(luaFile)) {
+			if (FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
 		}
 
-		if(doPush) 
-			luaArray.push(new FunkinLua(luaFile));
+	if (doPush) {
+		luaArray.push(new FunkinLua(luaFile));
+	}
 		#end
 
-		if(!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
+		if (!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
 			blammedLightsBlack = new ModchartSprite(FlxG.width * -0.5, FlxG.height * -0.5);
 			blammedLightsBlack.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
 			var position:Int = members.indexOf(gfGroup);
-			if(members.indexOf(boyfriendGroup) < position) {
+			if (members.indexOf(boyfriendGroup) < position) {
 				position = members.indexOf(boyfriendGroup);
-			} else if(members.indexOf(dadGroup) < position) {
+			} else if (members.indexOf(dadGroup) < position) {
 				position = members.indexOf(dadGroup);
 			}
 			insert(position, blammedLightsBlack);
@@ -762,12 +765,14 @@ class PlayState extends MusicBeatState
 			blammedLightsBlack.wasAdded = true;
 			modchartSprites.set('blammedLightsBlack', blammedLightsBlack);
 		}
-		if(curStage == 'philly') insert(members.indexOf(blammedLightsBlack) + 1, phillyCityLightsEvent);
+	if (curStage == 'philly') {
+		insert(members.indexOf(blammedLightsBlack) + 1, phillyCityLightsEvent);
+	}
 		blammedLightsBlack = modchartSprites.get('blammedLightsBlack');
 		blammedLightsBlack.alpha = 0.0;
 
 		var gfVersion:String = SONG.gfVersion;
-		if(gfVersion == null || gfVersion.length < 1) {
+		if (gfVersion == null || gfVersion.length < 1) {
 			switch (curStage)
 			{
 				case 'limo':
@@ -802,7 +807,7 @@ class PlayState extends MusicBeatState
 		camPos.x += gf.cameraPosition[0];
 		camPos.y += gf.cameraPosition[1];
 
-		if(dad.curCharacter.startsWith('gf')) {
+		if (dad.curCharacter.startsWith('gf')) {
 			dad.setPosition(GF_X, GF_Y);
 			gf.visible = false;
 		}
@@ -848,9 +853,11 @@ class PlayState extends MusicBeatState
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
 		timeTxt.visible = showTime;
-		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
+	if (ClientPrefs.downScroll) {
+		timeTxt.y = FlxG.height - 44;
+	}
 
-		if(ClientPrefs.timeBarType == 'Song Name')
+		if (ClientPrefs.timeBarType == 'Song Name')
 		{
 			timeTxt.text = SONG.song;
 		}
@@ -882,7 +889,7 @@ class PlayState extends MusicBeatState
 		add(strumLineNotes);
 		add(grpNoteSplashes);
 
-		if(ClientPrefs.timeBarType == 'Song Name')
+		if (ClientPrefs.timeBarType == 'Song Name')
 		{
 			timeTxt.size = 24;
 			timeTxt.y += 3;
@@ -902,14 +909,13 @@ class PlayState extends MusicBeatState
 		for (notetype in noteTypeMap.keys())
 		{
 			var luaToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.lua');
-			if(FileSystem.exists(luaToLoad))
+			var txtToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.txt');
+			if (FileSystem.exists(luaToLoad) || FileSystem.exists(txtToLoad))
 			{
 				luaArray.push(new FunkinLua(luaToLoad));
-			}
-			else
-			{
+			} else {
 				luaToLoad = Paths.getPreloadPath('custom_notetypes/' + notetype + '.lua');
-				if(FileSystem.exists(luaToLoad))
+				if (FileSystem.exists(luaToLoad))
 				{
 					luaArray.push(new FunkinLua(luaToLoad));
 				}
