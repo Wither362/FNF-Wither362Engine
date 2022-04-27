@@ -116,7 +116,7 @@ class CreditsState extends MusicBeatState
 			['Wither362',			'wither362',		'Creator/Programmer/Idea creator/nof this mod',				'https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw',    '444444'],
                         ['Wentuj',                      'wentuj',               'Help with animations',                                                         'https://www.youtube.com/channel/UCxpvgozTmlv22kowuogYd-g',    'C30085'],
                         [''],
-			['Wither362 Engine']
+			['Wither362 Engine'],
 			['Wither362', 'wither362', 'Programmer and sprites', 'https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw', 'FFFFFF'],
 			[''],
 			['Psych Engine Team'],
