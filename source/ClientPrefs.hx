@@ -27,17 +27,17 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	
-	public static var saltarIntro = false;
+	public static var saltarIntro:Bool = false;
 	public static var moreThings:Bool = false;
-	public static var chartingActivated = false;
-	public static var persistentUpdate = true;
-	public static var musicWhenDead = true;
-	public static var multiplicativeValue = 0;
+	public static var chartingActivated:Bool = false;
+	public static var persistentUpdate:Bool = true;
+	public static var musicWhenDead:Bool = true;
+	public static var multiplicativeValue:Float = 0;
 	
 	public static var spanish:Bool = false;
 	
 	public static var otherLink:Bool = true;
-	public static var selectableFps = false;
+	public static var selectableFps:Bool = false;
 	
 	public static var reloadWarning:Bool = true;
 	public static var reloadEventWarning:Bool = true;
