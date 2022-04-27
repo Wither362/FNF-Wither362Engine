@@ -29,6 +29,7 @@ class ClientPrefs {
 	
 	public static var moreThings:Bool = false;
 	public static var chartingActivated = false;
+	public static var persistentUpdate = true;
 	
 	public static var spanish:Bool = false;
 	
@@ -108,6 +109,7 @@ class ClientPrefs {
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.selectableFps = selectableFps;
+		FlxG.save.data.persistentUpdate = persistentUpdate;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
@@ -162,6 +164,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.middleScroll != null) {
 			middleScroll = FlxG.save.data.middleScroll;
+		}
+		if(FlxG.save.data.persistentUpdate != null) {
+			persistentUpdate = FlxG.save.data.persistentUpdate;
 		}
 		if(FlxG.save.data.showFPS != null) {
 			showFPS = FlxG.save.data.showFPS;
