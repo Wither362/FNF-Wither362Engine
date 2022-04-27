@@ -746,7 +746,7 @@ class ChartingState extends MusicBeatState
 		});
 
 		var pasteButton:FlxButton = new FlxButton(10, 180, "Paste Section", function() {
-			if(notesCopied == null || notesCopied.length < 1) {
+			if (notesCopied == null || notesCopied.length < 1) {
 				return;
 			}
 
@@ -812,7 +812,9 @@ class ChartingState extends MusicBeatState
 		var copyLastButton:FlxButton = new FlxButton(10, 270, "Copy last section", function()
 		{
 			var value:Int = Std.int(stepperCopy.value);
-			if (value == 0) return;
+			if (value == 0) {
+				return;
+			}
 
 			var daSec = FlxMath.maxInt(curSection, value);
 
@@ -850,7 +852,7 @@ class ChartingState extends MusicBeatState
 			for (note in _song.notes[curSection].sectionNotes)
 			{
 				var boob = note[1];
-				if (boob>3){
+				if (boob>3) {
 					boob -= 4;
 				} else {
 					boob += 4;
@@ -874,7 +876,9 @@ class ChartingState extends MusicBeatState
 			{
 				var boob = note[1]%4;
 				boob = 3 - boob;
-				if (note[1] > 3) boob += 4;
+				if (note[1] > 3) {
+					boob += 4;
+				}
 				
 				note[1] = boob;
 				var copiedNote:Array<Dynamic> = [note[0], boob, note[2], note[3]];
@@ -941,12 +945,12 @@ class ChartingState extends MusicBeatState
 		var directories:Array<String> = [Paths.mods('custom_notetypes/'), Paths.mods(Paths.currentModDirectory + '/custom_notetypes/')];
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
-			if(FileSystem.exists(directory)) {
+			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
 					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.txt') || file.endsWith('.lua')) #else file.endsWith('.lua') #end) {
 						var fileToCheck:String = file.substr(0, file.length - 4);
-						if(!noteTypeMap.exists(fileToCheck)) {
+						if (!noteTypeMap.exists(fileToCheck)) {
 							displayNameList.push(fileToCheck);
 							noteTypeMap.set(fileToCheck, key);
 							noteTypeIntMap.set(key, fileToCheck);
@@ -995,12 +999,12 @@ class ChartingState extends MusicBeatState
 		var directories:Array<String> = [Paths.mods('custom_events/'), Paths.mods(Paths.currentModDirectory + '/custom_events/')];
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
-			if(FileSystem.exists(directory)) {
+			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
 					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && file.endsWith('.txt')) {
 						var fileToCheck:String = file.substr(0, file.length - 4);
-						if(!eventPushedMap.exists(fileToCheck)) {
+						if (!eventPushedMap.exists(fileToCheck)) {
 							eventPushedMap.set(fileToCheck, true);
 							eventStuff.push([fileToCheck, File.getContent(path)]);
 						}
@@ -1047,22 +1051,22 @@ class ChartingState extends MusicBeatState
 		// New event buttons
 		var removeButton:FlxButton = new FlxButton(eventDropDown.x + eventDropDown.width + 10, eventDropDown.y, '-', function()
 		{
-			if(curSelectedNote != null && curSelectedNote[2] == null) //Is event note
+			if (curSelectedNote != null && curSelectedNote[2] == null) //Is event note
 			{
-				if(curSelectedNote[1].length < 2)
-				{
+				if (curSelectedNote[1].length < 2) {
 					_song.events.remove(curSelectedNote);
 					curSelectedNote = null;
-				}
-				else
-				{
+				} else {
 					curSelectedNote[1].remove(curSelectedNote[1][curEventSelected]);
 				}
 
 				var eventsGroup:Array<Dynamic>;
 				--curEventSelected;
-				if(curEventSelected < 0) curEventSelected = 0;
-				else if(curSelectedNote != null && curEventSelected >= (eventsGroup = curSelectedNote[1]).length) curEventSelected = eventsGroup.length - 1;
+				if (curEventSelected < 0) {
+					curEventSelected = 0;
+				} else if (curSelectedNote != null && curEventSelected >= (eventsGroup = curSelectedNote[1]).length) {
+					curEventSelected = eventsGroup.length - 1;
+				}
 				
 				changeEventSelected();
 				updateGrid();
