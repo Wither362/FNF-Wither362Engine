@@ -31,6 +31,7 @@ class ClientPrefs {
 	public static var moreThings:Bool = false;
 	public static var chartingActivated = false;
 	public static var persistentUpdate = true;
+	public static var musicWhenDead = true;
 	
 	public static var spanish:Bool = false;
 	
@@ -107,6 +108,7 @@ class ClientPrefs {
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
+		FlxG.save.data.musicWhenDead = musicWhenDead;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.selectableFps = selectableFps;
@@ -160,6 +162,9 @@ class ClientPrefs {
 	public static function loadPrefs() {
 		if(FlxG.save.data.otherLink != null) {
 			otherLink = FlxG.save.data.otherLink;
+		}
+		if(FlxG.save.data.musicWhenDead != null) {
+			musicWhenDead = FlxG.save.data.musicWhenDead;
 		}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
