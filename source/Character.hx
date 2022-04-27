@@ -98,12 +98,16 @@ class Character extends FlxSprite
 
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
+				var txtCharacterPath:String = 'characters/' + curCharacter + '.txt';
 
 				#if MODS_ALLOWED
 				var path:String = Paths.modFolders(characterPath);
+				var txtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
-				}
+				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath)) {
+					path = Paths.getPreloadPath(txtCharacterPath);
+				} #end
 
 				if (!FileSystem.exists(path))
 				#else
@@ -155,7 +159,7 @@ class Character extends FlxSprite
 					spriteType = "texture";
 				}
 
-				switch (spriteType){
+				switch (spriteType) {
 					
 					case "packer":
 						frames = Paths.getPackerAtlas(json.image);
@@ -168,7 +172,7 @@ class Character extends FlxSprite
 				}
 				imageFile = json.image;
 
-				if(json.scale != 1) {
+				if (json.scale != 1) {
 					jsonScale = json.scale;
 					setGraphicSize(Std.int(width * jsonScale));
 					updateHitbox();
@@ -180,7 +184,7 @@ class Character extends FlxSprite
 				healthIcon = json.healthicon;
 				singDuration = json.sing_duration;
 				flipX = !!json.flip_x;
-				if(json.no_antialiasing) {
+				if (json.no_antialiasing) {
 					antialiasing = false;
 					noAntialiasing = true;
 				}
