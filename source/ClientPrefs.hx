@@ -33,6 +33,7 @@ class ClientPrefs {
 	public static var spanish:Bool = false;
 	
 	public static var otherLink:Bool = true;
+	public static var selectableFps = false;
 	
 	public static var reloadWarning:Bool = true;
 	public static var reloadEventWarning:Bool = true;
@@ -106,6 +107,7 @@ class ClientPrefs {
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
+		FlxG.save.data.selectableFps = selectableFps;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
@@ -166,6 +168,9 @@ class ClientPrefs {
 			if(Main.fpsVar != null) {
 				Main.fpsVar.visible = showFPS;
 			}
+		}
+		if(FlxG.save.data.selectableFps != null) {
+			selectableFps = FlxG.save.data.selectableFps;
 		}
 		if(FlxG.save.data.moreThings != null) {
 			moreThings = FlxG.save.data.moreThings;
