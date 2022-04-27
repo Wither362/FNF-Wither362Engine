@@ -99,14 +99,18 @@ class Character extends FlxSprite
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
 				var txtCharacterPath:String = 'characters/' + curCharacter + '.txt';
+				var jsonTxtCharacterPath:String = 'characters/' + curCharacter + '.json.txt';
 
 				#if MODS_ALLOWED
 				var path:String = Paths.modFolders(characterPath);
 				var txtPath:String = Paths.modFolders(txtCharacterPath);
+				var jsonTxtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
 				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath)) {
 					path = Paths.getPreloadPath(txtCharacterPath);
+				} else if (!FileSystem.exists(jsonTxtPath)) {
+					path = Paths.getPreloadPath(jsonTxtPath);
 				} #end
 
 				if (!FileSystem.exists(path))
