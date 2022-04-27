@@ -98,6 +98,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		#end
+		
+		var option:Option = new Option('Skip Intro',
+			'If checked, you can skip intro',
+			'saltarIntro',
+			'bool',
+			false);
+		addOption(option);
 
 		super();
 	}
