@@ -1285,7 +1285,7 @@ class PlayState extends MusicBeatState
 			for (lua in luaArray)
 			{
 				if (lua.scriptName == luaFile) {
-					# if TXT_ALLOWED hahaha = 0; #end
+					#if TXT_ALLOWED hahaha = 0; #end
 					return;
 				} #if TXT_ALLOWED else if (lua.scriptName == mdFile) {
 					hahaha = 1;
