@@ -1268,7 +1268,7 @@ class PlayState extends MusicBeatState
 		if (FileSystem.exists(Paths.modFolders(luaFile))) {
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
-		} #if TXT_ALLOWED else if (FileSystem.exists(Paths.modFolders(mdFile))) {
+		#if TXT_ALLOWED } else if (FileSystem.exists(Paths.modFolders(mdFile))) {
 			mdFile = Paths.modFolders(mdFile);
 			doPush = true;
 		#end
@@ -1292,20 +1292,23 @@ class PlayState extends MusicBeatState
 					return;
 				} #end
 			}
-			#if TXT_ALLOWED if (hahaha == 1) {
-				luaArray.push(new FunkinLua(mdFile));
+			if (hahaha != null) {
+				#if TXT_ALLOWED if (hahaha == 1) {
+					luaArray.push(new FunkinLua(mdFile));
+				} else {
+					luaArray.push(new FunkinLua(luaFile));
+				} #else
+					luaArray.push(new FunkinLua(luaFile));
+				#end
 			} else {
 				luaArray.push(new FunkinLua(luaFile));
-			} #else
-				luaArray.push(new FunkinLua(luaFile));
-			#end
-			
+			}
 		}
 		#end
 	}
 	
 	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
-		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
+		if (gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
 			char.scrollFactor.set(0.95, 0.95);
 		}
