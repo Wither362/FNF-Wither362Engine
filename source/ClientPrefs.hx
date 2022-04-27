@@ -32,6 +32,7 @@ class ClientPrefs {
 	public static var chartingActivated = false;
 	public static var persistentUpdate = true;
 	public static var musicWhenDead = true;
+	public static var multiplicativeValue = 1.0
 	
 	public static var spanish:Bool = false;
 	
@@ -118,6 +119,7 @@ class ClientPrefs {
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
 		FlxG.save.data.otherLink = otherLink;
+		FlxG.save.data.multiplicativeValue = multiplicativeValue;
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.saltarIntro = saltarIntro;
@@ -162,6 +164,9 @@ class ClientPrefs {
 	public static function loadPrefs() {
 		if(FlxG.save.data.otherLink != null) {
 			otherLink = FlxG.save.data.otherLink;
+		}
+		if(FlxG.save.data.multiplicativeValue != null) {
+			multiplicativeValue = FlxG.save.data.multiplicativeValue;
 		}
 		if(FlxG.save.data.musicWhenDead != null) {
 			musicWhenDead = FlxG.save.data.musicWhenDead;
