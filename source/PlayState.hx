@@ -1281,7 +1281,7 @@ class PlayState extends MusicBeatState
 		
 		if (doPush)
 		{
-			var hahaha:Int;
+			var hahaha:Int = 2;
 			for (lua in luaArray)
 			{
 				if (lua.scriptName == luaFile) {
