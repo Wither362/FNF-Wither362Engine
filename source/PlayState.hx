@@ -908,7 +908,7 @@ class PlayState extends MusicBeatState
 			var txtToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.txt');
 			if (FileSystem.exists(luaToLoad)) {
 				luaArray.push(new FunkinLua(luaToLoad));
-			} else if (FileSystem.exist(txtToLoad)) {
+			} else if (FileSystem.exists(txtToLoad)) {
 				luaArray.push(new FunkinLua(txtToLoad));
 			} else {
 				luaToLoad = Paths.getPreloadPath('custom_notetypes/' + notetype + '.lua');
@@ -1292,7 +1292,7 @@ class PlayState extends MusicBeatState
 					return;
 				} #end
 			}
-			#if TXT_ALLOWED if (hahaha = 1) {
+			#if TXT_ALLOWED if (hahaha == 1) {
 				luaArray.push(new FunkinLua(mdFile));
 			} else {
 				luaArray.push(new FunkinLua(luaFile));
