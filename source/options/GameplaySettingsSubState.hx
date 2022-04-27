@@ -34,6 +34,17 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
+		var option:Option = new Option("Multiplicative Value",
+			"When you press SHIFT it multiplies the value by/nthe value you set it\nif it's 0, it will count the dafault value",
+			"multiplicativeValue",
+			"float",
+			0);
+		option.scrollSpeed = 5;
+		option.minValue = 0;
+		option.maxValue = 100;
+		option.changeValue = 0.1;
+		addOption(option);
+		
 		var option:Option = new Option("Music When Dead",
 			"If disabled, when you die it won't play music",
 			'musicWhenDead',
