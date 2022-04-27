@@ -44,7 +44,11 @@ class FPS extends TextField
 		this.y = y;
 
 		currentFPS = 0;
-		selectable = false;
+		selectable = if(ClientPrefs.selectableFps) {
+			true;
+		} else {
+			false;
+		};
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 14, color);
 		autoSize = LEFT;
