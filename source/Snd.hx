@@ -762,16 +762,15 @@ class Snd {
 		PLAYING.push(this);
 		curPlay = sound.play( startOffsetMs, loops, getRealVolume());
 		
-		if ( curPlay == null){
-			//#if !prod
-			//trace(" play missed?");
-			//#end
-		}
-		else {
-			//#if !prod
-			//trace("started");
-			//#end
-		}
+		/*if (curPlay == null) {
+			#if !prod
+			trace(" play missed?");
+			#end
+		} else {
+			#if !prod
+			trace("started");
+			#end
+		}*/
 	}
 	
 	/**
@@ -779,15 +778,15 @@ class Snd {
 	 */
 	public function startNoStop(?loops:Int=0, ?vol:Float=1.0, ?startOffsetMs:Float=0.0) : Null<Channel>{
 		if ( DISABLED ) 			{
-			//#if debug
-			//trace("[SND] Disabled");
-			//#end
+			/*#if debug
+			trace("[SND] Disabled");
+			#end*/
 			return null;
 		}
 		if ( sound == null ){
-			//#if debug
-			//trace("[SND] no inner sound");
-			//#end
+			/*#if debug
+			trace("[SND] no inner sound");
+			#end*/
 			return null;
 		}
 		
@@ -831,9 +830,9 @@ class Snd {
 		var str = "";
 		var res = fmodSystem.getSoundRAM( v0p, v1p, v2p );
 		if ( res != FMOD_OK){
-			//#if debug
-			//trace("[SND] cannot fetch snd ram dump ");
-			//#end
+			/*#if debug
+			trace("[SND] cannot fetch snd ram dump ");
+			#end*/
 		}
 		
 		inline function f( val :Float) : Float{
@@ -887,16 +886,13 @@ class Snd {
 		var p = play(0.0001);
 		if ( p == null ){
 			//trace("nothing ret");
-		}
-		else {
+		} /*else {
 			if ( p.curPlay == null){
-				//trace("no curplay wtf?");
+				trace("no curplay wtf?");
+			} else {
+				trace("curplay ok");
 			}
-			else 
-			{
-				//trace("curplay ok");
-			}
-		}
+		}*/
 		tweenVolume(endVolume, fadeDuration);
 		return p;
 	}
@@ -909,9 +905,9 @@ class Snd {
 	
 	public function fadeStop( ?fadeDuration = 100 ) {
 		if ( !isPlaying()){
-			//#if !prod
-			//trace("not playing " + name+" winn not unfade");//can cause reentrancy issues
-			//#end
+			/*#if !prod
+			trace("not playing " + name+" winn not unfade");//can cause reentrancy issues
+			#end*/
 			return null;
 		}
 		
@@ -938,9 +934,9 @@ class Snd {
 	
 	public function isPlaying(){
 		if ( curPlay == null ){
-			#if !prod
-			//trace("no curplay");
-			#end
+			/*#if !prod
+			trace("no curplay");
+			#end*/
 			return false;
 		}
 		return curPlay.isPlaying();
@@ -980,41 +976,39 @@ class Snd {
 			var vol = getRealVolume();
 			//trace("r:"+vol);
 			curPlay.setVolume( vol );
-		}
-		else {
-			//#if debug
-			//trace("[Snd] no playin no refresh "+name);
-			//#end
-		}
+		} /*else {
+			#if debug
+			trace("[Snd] no playin no refresh "+name);
+			#end
+		} */
 	}
 	
 	public function	setPlayCursorSec( pos:Float ) 	{
 		if (curPlay != null)	{
 			curPlay.setPlayCursorSec(pos);
-		}
-		else {
-			//#if debug
-			//trace("setPlayCursorSec/no current instance");
-			//#end
-		}
+		} /*else {
+			#if debug
+			trace("setPlayCursorSec/no current instance");
+			#end
+		} */
 	}
 	
 	public function	setPlayCursorMs( pos:Float ){ 
-		if (curPlay != null) 	
+		if (curPlay != null) {
 			curPlay.setPlayCursorMs(pos);
-		else {
-			//#if debug
-			//trace("setPlayCursorMs/no current instance");
-			//#end
-		}
+		} /*else {
+			#if debug
+			trace("setPlayCursorMs/no current instance");
+			#end
+		} */
 	}
 	
 	public function tweenVolume(v:Float, ?easing:h2d.Tweenie.TType, ?milliseconds:Float=100) : TweenV {
 		if ( easing == null ) easing = h2d.Tweenie.TType.TEase;
 		var t = TW.create(this, TVVVolume, v, easing, milliseconds);
-		//#if !prod 
-		//trace("tweening " + name+" to " + v);
-		//#end
+		/*#if !prod 
+		trace("tweening " + name+" to " + v);
+		#end*/
 		return t;
 	}
 	
@@ -1040,12 +1034,12 @@ class Snd {
 	}
 	
 	static var _stop = function(t:TweenV){
-		#if !prod
-		//if( t.parent != null )
-			//trace(t.parent.name+" cbk stopped");
-		//else 
-			//trace(" unbound stop called");
-		#end
+		/*#if !prod
+		if( t.parent != null )
+			trace(t.parent.name+" cbk stopped");
+		else 
+			trace(" unbound stop called");
+		#end*/
 		t.parent.stop();
 	}
 	
@@ -1053,9 +1047,9 @@ class Snd {
 		
 		//avoid unwanted crash
 		if ( released ){
-			//#if !prod
-			//trace("sorry released");
-			//#end
+			/*#if !prod
+			trace("sorry released");
+			#end*/
 			return;
 		}
 		
@@ -1068,9 +1062,9 @@ class Snd {
 	}
 	
 	function onComplete(){
-		//#if debug
-		//trace("onComplete " + haxe.Timer.stamp());
-		//#end
+		/*#if debug
+		trace("onComplete " + haxe.Timer.stamp());
+		#end*/
 		
 		if (curPlay != null) {
 			curPlay.onComplete();
@@ -1081,9 +1075,9 @@ class Snd {
 	
 	public function isComplete(){
 		if ( curPlay == null ) {
-			//#if!prod
-			//trace("comp: no cur play");
-			//#end
+			/*#if!prod
+			trace("comp: no cur play");
+			#end*/
 			return true;
 		}
 		return curPlay.isComplete();
@@ -1099,9 +1093,9 @@ class Snd {
 	public static function loadSound( path:String, streaming : Bool, blocking : Bool  ) : Sound {
 		
 		if ( released ) {
-			//#if(!prod)
-			//trace("FMOD not active "+path);
-			//#end
+			/*#if(!prod)
+			trace("FMOD not active "+path);
+			#end*/
 			return null;
 		}
 		
@@ -1148,9 +1142,9 @@ class Snd {
 	
 	public static function loadEvent( path:String ) : Sound {
 		if ( released ) {
-			//#if (!prod) 
-			//trace("FMOD not active "+path);
-			//#end
+			/*#if (!prod) 
+			trace("FMOD not active "+path);
+			#end*/
 			return null;
 		}
 		
@@ -1179,9 +1173,9 @@ class Snd {
 	
 	public static function fromFaxe( path:String ) : Snd {
 		if ( released ) {
-			//#if (!prod) 
-			//trace("FMOD not active "+path);
-			//#end
+			/*#if (!prod) 
+			trace("FMOD not active "+path);
+			#end*/
 			return null;
 		}
 		
@@ -1232,9 +1226,9 @@ class Snd {
 	public static function update() {
 		for ( p in PLAYING.backWardIterator())
 			if ( p.isComplete()){
-				#if !prod
-				//trace("[Snd] isComplete " + p);
-				#end
+				/*#if !prod
+				trace("[Snd] isComplete " + p);
+				#end*/
 				p.onComplete();
 			}
 		TW.update();//let tweens complete
@@ -1280,9 +1274,9 @@ class Snd {
 		//	trace("loading...");
 			
 		var t1 = haxe.Timer.stamp();
-		#if debug
-		//trace("time to load bank:" + (t1 - t0)+"s");
-		#end
+		/*#if debug
+		trace("time to load bank:" + (t1 - t0)+"s");
+		#end*/
 		return cast fbank;
 	}
 }
