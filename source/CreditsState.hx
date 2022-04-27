@@ -118,7 +118,7 @@ class CreditsState extends MusicBeatState
                         [''],
 			['Wither362 Engine']
 			['Wither362', 'wither362', 'Programmer and sprites', 'https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw', 'FFFFFF'],
-			['']
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',						'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',					'https://twitter.com/river_oaken',		'C30085'],
