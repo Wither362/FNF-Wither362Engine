@@ -1292,7 +1292,7 @@ class PlayState extends MusicBeatState
 					return;
 				} #end
 			}
-			if (hahaha != null) {
+			if (hahaha != 2) {
 				#if TXT_ALLOWED if (hahaha == 1) {
 					luaArray.push(new FunkinLua(mdFile));
 				} else {
