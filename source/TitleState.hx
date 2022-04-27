@@ -453,10 +453,9 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		/*if (pressedEnter && !skippedIntro)
-		{
+		if (pressedEnter && !skippedIntro && ClientPrefs.saltarIntro) {
 			skipIntro();
-		}*/
+		}
 
 		if(swagShader != null)
 		{
@@ -507,16 +506,18 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		if(logoBl != null) 
+		if(logoBl != null) {
 			logoBl.animation.play('bump', true);
+		}
 
 		if(gfDance != null) {
 			danceLeft = !danceLeft;
 
-			if (danceLeft)
+			if (danceLeft) {
 				gfDance.animation.play('danceRight');
-			else
+			} else {
 				gfDance.animation.play('danceLeft');
+			}
 		}
 
 		if(!closedState) {
@@ -533,6 +534,9 @@ class TitleState extends MusicBeatState
 					createCoolText(["So you'll have to"], 15);
 					addMoreText("hold on");
 					addMoreText("until the intro finish");
+				case 6:
+					deleteCoolText();
+					createCoolText(["unless, you"], 15);
 				case 7:
 					#if PSYCH_WATERMARKS
 					createCoolText(['Psych Engine by'], 15);
