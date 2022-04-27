@@ -32,7 +32,7 @@ class ClientPrefs {
 	public static var chartingActivated = false;
 	public static var persistentUpdate = true;
 	public static var musicWhenDead = true;
-	public static var multiplicativeValue = 1.0
+	public static var multiplicativeValue = 0;
 	
 	public static var spanish:Bool = false;
 	
