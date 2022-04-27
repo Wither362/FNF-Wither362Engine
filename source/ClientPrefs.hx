@@ -27,6 +27,7 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	
+	public static var saltarIntro = false;
 	public static var moreThings:Bool = false;
 	public static var chartingActivated = false;
 	public static var persistentUpdate = true;
@@ -117,6 +118,7 @@ class ClientPrefs {
 		FlxG.save.data.otherLink = otherLink;
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
+		FlxG.save.data.saltarIntro = saltarIntro;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
@@ -173,6 +175,9 @@ class ClientPrefs {
 			if(Main.fpsVar != null) {
 				Main.fpsVar.visible = showFPS;
 			}
+		}
+		if(FlxG.save.data.saltarIntro != null) {
+			saltarIntro = FlxG.save.data.saltarIntro;
 		}
 		if(FlxG.save.data.selectableFps != null) {
 			selectableFps = FlxG.save.data.selectableFps;
