@@ -27,7 +27,7 @@ var modsAsa = if(ClientPrefs.moreThings) 'mods' else null;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.7.1'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = Assets.getText(Paths.txt('gitVersion')); //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
