@@ -26,7 +26,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	private var modsAsa = if(ClientPrefs.moreThings) 'mods' else '';
+	var modsAsa = if(ClientPrefs.moreThings) 'mods' else '';
 	public static var psychEngineVersion:String = Assets.getText(Paths.txt('gitVersion')); //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
