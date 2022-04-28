@@ -288,8 +288,9 @@ class PlayState extends MusicBeatState
 			keysPressed.push(false);
 		}
 
-		if (FlxG.sound.music != null)
+		if (FlxG.sound.music != null) {
 			FlxG.sound.music.stop();
+		}
 
 		// Gameplay settings
 		healthGain = ClientPrefs.getGameplaySetting('healthgain', 1);
@@ -343,7 +344,7 @@ class PlayState extends MusicBeatState
 
 		curStage = PlayState.SONG.stage;
 		//trace('stage is: ' + curStage);
-		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
+		if (PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
 			switch (songName)
 			{
 				case 'spookeez' | 'south' | 'monster':
@@ -401,7 +402,7 @@ class PlayState extends MusicBeatState
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
 				add(stageFront);
-				if(!ClientPrefs.lowQuality) {
+				if (!ClientPrefs.lowQuality) {
 					var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
 					stageLight.updateHitbox();
