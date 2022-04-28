@@ -537,8 +537,10 @@ class TitleState extends MusicBeatState
 					addMoreText("until the intro finish");
 				case 6:
 					deleteCoolText();
-					createCoolText(["unless, you"], 15);
+					createCoolText(["unless, you have"], 15);
+					addMoreText("activated the option");
 				case 7:
+					deleteCoolText();
 					#if PSYCH_WATERMARKS
 					createCoolText(['Psych Engine by'], 15);
 					#else
