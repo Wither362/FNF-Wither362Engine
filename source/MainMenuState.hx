@@ -20,14 +20,14 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
-import openfl.Assets;
 
 using StringTools;
 
+var modsAsa = if(ClientPrefs.moreThings) 'mods' else null;
+
 class MainMenuState extends MusicBeatState
 {
-	var modsAsa = if(ClientPrefs.moreThings) 'mods' else null;
-	public static var psychEngineVersion:String = Assets.getText(Paths.txt('gitVersion')); //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.7.2'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
