@@ -1071,7 +1071,11 @@ class PlayState extends MusicBeatState
 					{
 						luaArray.push(new FunkinLua(folder + file));
 						filesPushed.push(file);
-					} #end
+					} else if (file.endsWith('.txt') && !filesPushed.contains(file))
+					{
+						luaArray.push(new FunkinLua(folder + file));
+						filesPushed.push(file);
+					}#end
 				}
 			}
 		}
@@ -1136,7 +1140,9 @@ class PlayState extends MusicBeatState
 						});
 					});
 				case 'senpai' | 'roses' | 'thorns':
-					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
+					if (daSong == 'roses') {
+						FlxG.sound.play(Paths.sound('ANGRY'));
+					}
 					schoolIntro(doof);
 
 				default:
@@ -1191,7 +1197,7 @@ class PlayState extends MusicBeatState
 			}
 			for (note in unspawnNotes)
 			{
-				if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end'))
+				if (note.isSustainNote && !note.animation.curAnim.name.endsWith('end'))
 				{
 					note.scale.y *= ratio;
 					note.updateHitbox();
@@ -1286,7 +1292,9 @@ class PlayState extends MusicBeatState
 			for (lua in luaArray)
 			{
 				if (lua.scriptName == luaFile) {
-					#if TXT_ALLOWED hahaha = 0; #end
+					#if 
+						TXT_ALLOWED hahaha = 0; 
+					#end
 					return;
 				} #if TXT_ALLOWED else if (lua.scriptName == mdFile) {
 					hahaha = 1;
@@ -1322,12 +1330,12 @@ class PlayState extends MusicBeatState
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
 		#if sys
-		if(FileSystem.exists(fileName)) {
+		if (FileSystem.exists(fileName)) {
 			foundFile = true;
 		}
 		#end
 
-		if(!foundFile) {
+		if (!foundFile) {
 			fileName = Paths.video(name);
 			#if sys
 			if(FileSystem.exists(fileName)) {
