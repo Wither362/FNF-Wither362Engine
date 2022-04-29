@@ -33,6 +33,7 @@ class ClientPrefs {
 	public static var persistentUpdate:Bool = true;
 	public static var musicWhenDead:Bool = true;
 	public static var multiplicativeValue:Float = 0;
+	public static var reduceNotes:Bool = false;
 	
 	public static var spanish:Bool = false;
 	
@@ -116,6 +117,7 @@ class ClientPrefs {
 		FlxG.save.data.persistentUpdate = persistentUpdate;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
+		FlxG.save.data.reduceNotes = reduceNotes;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
 		FlxG.save.data.otherLink = otherLink;
@@ -170,6 +172,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.musicWhenDead != null) {
 			musicWhenDead = FlxG.save.data.musicWhenDead;
+		}
+		if(FlxG.save.data.reduceNotes != null) {
+			reduceNotes = FlxG.save.data.reduceNotes;
 		}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
