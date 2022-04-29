@@ -29,6 +29,7 @@ using StringTools;
 
 class GameplayChangersSubstate extends MusicBeatSubstate
 {
+	private var multiplicativeValue = ClientPrefs.multiplicativeValue;
 	private var curOption:GameplayOption = null;
 	private var curSelected:Int = 0;
 	private var optionsArray:Array<Dynamic> = [];
@@ -46,7 +47,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.scrollSpeed = 10.5;
 		option.minValue = 0.01;
 		if (FlxG.keys.pressed.SHIFT) {
-			option.changeValue = 1.0;
+			if (multiplicativeValue > 0) {
+				option.changeValue = multiplicativeValue;
+			} else {
+				option.changeValue = 1.0;
+			}
 		} else {
 			option.changeValue = 0.1;
 		}
@@ -75,7 +80,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.minValue = 0;
 		option.maxValue = 10;
 		if (FlxG.keys.pressed.SHIFT) {
-			option.changeValue = 1.0;
+			if(multiplicativeValue > 0) {
+				option.changeValue = multiplicativeValue;
+			} else {
+				option.changeValue = 1.0;
+			}
 		} else {
 			option.changeValue = 0.1;
 		}
@@ -87,7 +96,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.minValue = 0.5;
 		option.maxValue = 10;
 		if (FlxG.keys.pressed.SHIFT) {
-			option.changeValue = 1.0;
+			if(multiplicativeValue > 0) {
+				option.changeValue = multiplicativeValue;
+			} else {
+				option.changeValue = 1.0;
+			}
 		} else {
 			option.changeValue = 0.1;
 		}
@@ -354,10 +367,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 	function changeSelection(change:Int = 0)
 	{
 		curSelected += change;
-		if (curSelected < 0)
+		if (curSelected < 0) {
 			curSelected = optionsArray.length - 1;
-		if (curSelected >= optionsArray.length)
+		}
+		if (curSelected >= optionsArray.length) {
 			curSelected = 0;
+		}
 
 		var bullShit:Int = 0;
 

@@ -166,7 +166,7 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		MusicBeatState.switchState(new ChartingState());
 		#else
-		if(FlxG.save.data.flashing == null && !FlashingState.leftState) {
+		if (FlxG.save.data.flashing == null && !FlashingState.leftState) {
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
 			MusicBeatState.switchState(new FlashingState());
@@ -230,7 +230,7 @@ class TitleState extends MusicBeatState
 		
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
-		}else{
+		} else {
 			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		}
 		
@@ -337,7 +337,7 @@ class TitleState extends MusicBeatState
 
 	function getIntroTextShit():Array<Array<String>>
 	{
-		var fullText:String = Assets.getText(Paths.txt('introText'));
+		var fullText:String = if(ClientPrefs.spanish) Assets.getText(Paths.txt('textoDelPrincipio')) else Assets.getText(Paths.txt('introText'));
 
 		var firstArray:Array<String> = fullText.split('\n');
 		var swagGoodArray:Array<Array<String>> = [];
@@ -354,8 +354,9 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.sound.music != null)
+		if (FlxG.sound.music != null) {
 			Conductor.songPosition = FlxG.sound.music.time;
+		}
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
@@ -453,10 +454,9 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		/*if (pressedEnter && !skippedIntro)
-		{
+		if (pressedEnter && !skippedIntro && ClientPrefs.saltarIntro) {
 			skipIntro();
-		}*/
+		}
 
 		if(swagShader != null)
 		{
@@ -507,16 +507,18 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		if(logoBl != null) 
+		if(logoBl != null) {
 			logoBl.animation.play('bump', true);
+		}
 
 		if(gfDance != null) {
 			danceLeft = !danceLeft;
 
-			if (danceLeft)
+			if (danceLeft) {
 				gfDance.animation.play('danceRight');
-			else
+			} else {
 				gfDance.animation.play('danceLeft');
+			}
 		}
 
 		if(!closedState) {
@@ -524,13 +526,28 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
+					createCoolText(["Don't try anything"], 15);
+				case 3:
+					addMoreText("I deleted the");
+					addMoreText("skip intro thing");
+				case 5:
+					deleteCoolText();
+					createCoolText(["So you'll have to"], 15);
+					addMoreText("hold on");
+					addMoreText("until the intro finish");
+				case 6:
+					deleteCoolText();
+					createCoolText(["unless, you have"], 15);
+					addMoreText("activated the option");
+				case 7:
+					deleteCoolText();
 					#if PSYCH_WATERMARKS
 					createCoolText(['Psych Engine by'], 15);
 					#else
 					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 					#end
 				// credTextShit.visible = true;
-				case 3: //valor anterior +2
+				case 9: //valor anterior +2
 					#if PSYCH_WATERMARKS
 					addMoreText('Shadow Mario', 15);
 					addMoreText('RiverOaken', 15);
@@ -540,86 +557,86 @@ class TitleState extends MusicBeatState
 					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 4:
+				case 10:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 5:
+				case 11:
 					#if PSYCH_WATERMARKS
 					createCoolText(['But modificated by'], 15);
 					#else
 					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 					#end
 				// credTextShit.visible = true;
-				case 7: //anterior valor +2
+				case 13: //anterior valor +2
 					addMoreText('Wither362', 15);
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 8:
+				case 14:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 9: //cosa de newgrounds
+				case 15: //cosa de newgrounds
 					#if PSYCH_WATERMARKS 
 					createCoolText(['A mod made with', 'help of'], -40);
 					#else
 					createCoolText(['A mod made with', 'help of'], -40);
 					#end
-				case 11: //valor anterior +2
+				case 17: //valor anterior +2
 					addMoreText('Wentuj', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
-				case 12:
+				case 18:
 					deleteCoolText();
 					ngSpr.visible = false;
 				// credTextShit.visible = false;
 
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
-				case 13: //otra vez lo de newgrounds
+				case 20: //otra vez lo de newgrounds
 					#if PSYCH_WATERMARKS
 					createCoolText(['A mod made', 'by'], -40);
 					#else
 					createCoolText(['A mod made', 'by'], -40);
 					#end
-				case 15: //valor anterior +2
+				case 22: //valor anterior +2
 					addMoreText('Witherplays362', -40);
 					wrSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
-				case 16:
+				case 23:
 					deleteCoolText();
 					wrSpr.visible = false;
 				// credTextShit.visible = false;
 
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 
-				case 17:
+				case 24:
 					createCoolText([curWacky[0]]);
 				// credTextShit.visible = true;
-				case 18: //valor anterior +2
+				case 26: //valor anterior +2
 					addMoreText(curWacky[1]);
 				// credTextShit.text += '\nlmao';
-				case 19:
+				case 27:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
-				case 20:
+				case 28:
 					addMoreText('Friday');
 				// credTextShit.visible = true;
-				case 21:
+				case 29:
 					addMoreText('Night');
 				// credTextShit.text += '\nNight';
-				case 22:
+				case 30:
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
 
-				case 23:
+				case 32:
 					deleteCoolText();
 					createCoolText(['Please like it']);
 					addMoreText('It took me years');
-				case 24:
+				case 36:
 					skipIntro();
 			}
 		}

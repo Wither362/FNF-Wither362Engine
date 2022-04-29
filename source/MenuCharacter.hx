@@ -31,8 +31,12 @@ class MenuCharacter extends FlxSprite
 	}
 
 	public function changeCharacter(?character:String = 'bf') {
-		if(character == null) character = '';
-		if(character == this.character) return;
+		if(character == null) {
+			character = '';
+		}
+		if(character == this.character) {
+			return;
+		}
 
 		this.character = character;
 		antialiasing = ClientPrefs.globalAntialiasing;
@@ -48,13 +52,17 @@ class MenuCharacter extends FlxSprite
 				dontPlayAnim = true;
 			default:
 				var characterPath:String = 'images/menucharacters/' + character + '.json';
+				var txtCharacterPath:String = "images/menucharacters/" + character + ".txt";
 				var rawJson = null;
 
 				#if MODS_ALLOWED
 				var path:String = Paths.modFolders(characterPath);
+				var txtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
-				}
+				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath)) {
+					path = Paths.getPreloadPath(txtCharacterPath);
+				} #end
 
 				if(!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath('images/menucharacters/' + DEFAULT_CHARACTER + '.json');

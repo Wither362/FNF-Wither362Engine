@@ -22,7 +22,7 @@ import vlc.LibVLC;
  * @author Tommy S
  */
 #if (cpp && !mobile)
-@:cppFileCode('#include "LibVLC.cpp"')
+	@:cppFileCode('#include "LibVLC.cpp"')
 #end
 class VlcBitmap extends Bitmap
 {
@@ -65,7 +65,7 @@ class VlcBitmap extends Bitmap
 	//-----------------------------------------------------------------------------------
 	var bufferMem:Array<UInt8>;
 	#if (cpp && !mobile)
-	var libvlc:LibVLC;
+		var libvlc:LibVLC;
 	#end
 
 	// ===================================================================================
@@ -91,7 +91,7 @@ class VlcBitmap extends Bitmap
 		super(null, null, true);
 
 		#if (cpp && !mobile)
-		init();
+			init();
 		#end
 	}
 
@@ -105,7 +105,7 @@ class VlcBitmap extends Bitmap
 	function init()
 	{
 		#if (cpp && !mobile)
-		addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		#end
 	}
 
@@ -127,23 +127,26 @@ class VlcBitmap extends Bitmap
 
 		if (!inWindow)
 		{
-			if (source != null)
+			if (source != null) {
 				libvlc.play(source);
-			else
+			} else {
 				libvlc.play();
+			}
 		}
 		else
 		{
-			if (source != null)
+			if (source != null) {
 				libvlc.playInWindow(source);
-			else
+			} else {
 				libvlc.playInWindow();
+			}
 
 			libvlc.setWindowFullscreen(fullscreen);
 		}
 
-		if (onPlay != null)
+		if (onPlay != null) {
 			onPlay();
+		}
 		#end
 	}
 
@@ -155,8 +158,9 @@ class VlcBitmap extends Bitmap
 		// if (disposeOnStop)
 		// dispose();
 
-		if (onStop != null)
+		if (onStop != null) {
 			onStop();
+		}
 		#end
 	}
 
@@ -165,8 +169,9 @@ class VlcBitmap extends Bitmap
 		#if (cpp && !mobile)
 		isPlaying = false;
 		libvlc.pause();
-		if (onPause != null)
+		if (onPause != null) {
 			onPause();
+		}
 		#end
 	}
 
@@ -175,41 +180,45 @@ class VlcBitmap extends Bitmap
 		#if (cpp && !mobile)
 		isPlaying = true;
 		libvlc.resume();
-		if (onResume != null)
+		if (onResume != null) {
 			onResume();
+		}
 		#end
 	}
 
 	public function seek(seekTotime:Float)
 	{
 		#if (cpp && !mobile)
-		libvlc.setPosition(seekTotime);
-		if (onSeek != null)
+			libvlc.setPosition(seekTotime);
+		if (onSeek != null) {
 			onSeek();
+		}
 		#end
 	}
 
 	public function getFPS():Float
 	{
 		#if (cpp && !mobile)
-		if (libvlc != null && initComplete)
-			return libvlc.getFPS();
-		else
-			return 0;
+			if (libvlc != null && initComplete) {
+				return libvlc.getFPS();
+			} else {
+				return 0;
+			}
 		#else
-		return 0;
+			return 0;
 		#end
 	}
 
 	public function getTime():Int
 	{
 		#if (cpp && !mobile)
-		if (libvlc != null && initComplete)
-			return libvlc.getTime();
-		else
-			return 0;
+			if (libvlc != null && initComplete) {
+				return libvlc.getTime();
+			} else {
+				return 0;
+			}
 		#else
-		return 0;
+			return 0;
 		#end
 	}
 
@@ -301,13 +310,16 @@ class VlcBitmap extends Bitmap
 		duration = libvlc.getDuration();
 		length = libvlc.getLength();
 
-		if (bitmapData != null)
+		if (bitmapData != null) {
 			bitmapData.dispose();
+		}
 
-		if (texture != null)
+		if (texture != null) {
 			texture.dispose();
-		if (texture2 != null)
+		}
+		if (texture2 != null) {
 			texture2.dispose();
+		}
 
 		// BitmapData
 		bitmapData = new BitmapData(Std.int(videoWidth), Std.int(videoHeight), true, 0);
@@ -319,15 +331,17 @@ class VlcBitmap extends Bitmap
 
 		smoothing = true;
 
-		if (_width != null)
+		if (_width != null) {
 			width = _width;
-		else
+		} else {
 			width = videoWidth;
+		}
 
-		if (_height != null)
+		if (_height != null) {
 			height = _height;
-		else
+		} else {
 			height = videoHeight;
+		}
 
 		bufferMem = [];
 		frameSize = videoWidth * videoHeight * 4;
@@ -336,8 +350,9 @@ class VlcBitmap extends Bitmap
 
 		initComplete = true;
 
-		if (onVideoReady != null)
+		if (onVideoReady != null) {
 			onVideoReady();
+		}
 		#end
 	}
 
@@ -372,8 +387,9 @@ class VlcBitmap extends Bitmap
 					{
 						// BitmapData
 						// libvlc.getPixelData() sometimes is null and the exe hangs ...
-						if (libvlc.getPixelData() != null)
+						if (libvlc.getPixelData() != null) {
 							bitmapData.setPixels(frameRect, Bytes.ofData(bufferMem));
+						}
 
 						// (Stage3D)
 						// texture.uploadFromByteArray( Bytes.ofData(cast(bufferMem)), 0 );
@@ -404,10 +420,11 @@ class VlcBitmap extends Bitmap
 	public function getVolume():Float
 	{
 		#if (cpp && !mobile)
-		if (libvlc != null && initComplete)
+		if (libvlc != null && initComplete) {
 			return libvlc.getVolume();
-		else
+		} else {
 			return 0;
+		}
 		#else
 		return 0;
 		#end
@@ -417,16 +434,18 @@ class VlcBitmap extends Bitmap
 
 	function statusOnOpening()
 	{
-		if (onOpening != null)
+		if (onOpening != null) {
 			onOpening();
+		}
 	}
 
 	function statusOnBuffering()
 	{
 		trace("buffering");
 
-		if (onBuffer != null)
+		if (onBuffer != null) {
 			onBuffer();
+		}
 	}
 
 	function statusOnPlaying()
@@ -441,37 +460,44 @@ class VlcBitmap extends Bitmap
 
 	function statusOnPaused()
 	{
-		if (isPlaying)
+		if (isPlaying) {
 			isPlaying = false;
+		}
 
-		if (onPause != null)
+		if (onPause != null) {
 			onPause();
+		}
 	}
 
 	function statusOnStopped()
 	{
-		if (isPlaying)
+		if (isPlaying) {
 			isPlaying = false;
+		}
 
-		if (onStop != null)
+		if (onStop != null) {
 			onStop();
+		}
 	}
 
 	function statusOnEndReached()
 	{
-		if (isPlaying)
+		if (isPlaying) {
 			isPlaying = false;
+		}
 
 		// trace("end reached!");
-		if (onComplete != null)
+		if (onComplete != null) {
 			onComplete();
+		}
 	}
 
 	function statusOnTimeChanged(newTime:Int)
 	{
 		time = newTime;
-		if (onProgress != null)
+		if (onProgress != null) {
 			onProgress();
+		}
 	}
 
 	function statusOnPositionChanged(newPos:Int)
@@ -480,8 +506,9 @@ class VlcBitmap extends Bitmap
 
 	function statusOnSeekableChanged(newPos:Int)
 	{
-		if (onSeek != null)
+		if (onSeek != null) {
 			onSeek();
+		}
 	}
 
 	function statusOnForward()
@@ -501,8 +528,9 @@ class VlcBitmap extends Bitmap
 	{
 		trace("VLC ERROR - File not found?");
 
-		if (onError != null)
+		if (onError != null) {
 			onError();
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////

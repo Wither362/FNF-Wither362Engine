@@ -34,6 +34,31 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
+		var option:Option = new Option("Reduce Notes When Pasting",
+			"If activated, when you paste the notes/nit will reduce them",
+			"reduceNotes",
+			"bool",
+			false);
+		addOption(option);
+		
+		var option:Option = new Option("Multiplicative Value",
+			"When you press SHIFT it multiplies the value by/nthe value you set it\nif it's 0, it will count the dafault value",
+			"multiplicativeValue",
+			"float",
+			0);
+		option.scrollSpeed = 5;
+		option.minValue = 0;
+		option.maxValue = 100;
+		option.changeValue = 0.1;
+		addOption(option);
+		
+		var option:Option = new Option("Music When Dead",
+			"If disabled, when you die it won't play music",
+			'musicWhenDead',
+			'bool',
+			true);
+		addOption(option);
+		
 		var option:Option = new Option('Controller Mode',
 			'Check this if you want to play with\na controller instead of using your Keyboard.',
 			'controllerMode',

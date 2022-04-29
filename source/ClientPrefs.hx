@@ -27,12 +27,18 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	
+	public static var saltarIntro:Bool = false;
 	public static var moreThings:Bool = false;
-	public static var chartingActivated = false;
+	public static var chartingActivated:Bool = false;
+	public static var persistentUpdate:Bool = true;
+	public static var musicWhenDead:Bool = true;
+	public static var multiplicativeValue:Float = 0;
+	public static var reduceNotes:Bool = false;
 	
 	public static var spanish:Bool = false;
 	
 	public static var otherLink:Bool = true;
+	public static var selectableFps:Bool = false;
 	
 	public static var reloadWarning:Bool = true;
 	public static var reloadEventWarning:Bool = true;
@@ -104,15 +110,21 @@ class ClientPrefs {
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
+		FlxG.save.data.musicWhenDead = musicWhenDead;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
+		FlxG.save.data.selectableFps = selectableFps;
+		FlxG.save.data.persistentUpdate = persistentUpdate;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
+		FlxG.save.data.reduceNotes = reduceNotes;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
 		FlxG.save.data.otherLink = otherLink;
+		FlxG.save.data.multiplicativeValue = multiplicativeValue;
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
+		FlxG.save.data.saltarIntro = saltarIntro;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
@@ -155,17 +167,35 @@ class ClientPrefs {
 		if(FlxG.save.data.otherLink != null) {
 			otherLink = FlxG.save.data.otherLink;
 		}
+		if(FlxG.save.data.multiplicativeValue != null) {
+			multiplicativeValue = FlxG.save.data.multiplicativeValue;
+		}
+		if(FlxG.save.data.musicWhenDead != null) {
+			musicWhenDead = FlxG.save.data.musicWhenDead;
+		}
+		if(FlxG.save.data.reduceNotes != null) {
+			reduceNotes = FlxG.save.data.reduceNotes;
+		}
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}
 		if(FlxG.save.data.middleScroll != null) {
 			middleScroll = FlxG.save.data.middleScroll;
 		}
+		if(FlxG.save.data.persistentUpdate != null) {
+			persistentUpdate = FlxG.save.data.persistentUpdate;
+		}
 		if(FlxG.save.data.showFPS != null) {
 			showFPS = FlxG.save.data.showFPS;
 			if(Main.fpsVar != null) {
 				Main.fpsVar.visible = showFPS;
 			}
+		}
+		if(FlxG.save.data.saltarIntro != null) {
+			saltarIntro = FlxG.save.data.saltarIntro;
+		}
+		if(FlxG.save.data.selectableFps != null) {
+			selectableFps = FlxG.save.data.selectableFps;
 		}
 		if(FlxG.save.data.moreThings != null) {
 			moreThings = FlxG.save.data.moreThings;

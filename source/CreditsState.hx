@@ -57,31 +57,58 @@ class CreditsState extends MusicBeatState
 		for (folder in Paths.getModDirectories())
 		{
 			var creditsFile:String = Paths.mods(folder + '/data/credits.txt');
+			var luaCreditsFile:String = Paths.mods(folder + '/data/credits.lua');
 			if (FileSystem.exists(creditsFile))
 			{
 				var firstarray:Array<String> = File.getContent(creditsFile).split('\n');
-				for(i in firstarray)
-				{
+				for(i in firstarray) {
 					var arr:Array<String> = i.replace('\\n', '\n').split("::");
-					if(arr.length >= 5) arr.push(folder);
+					if (arr.length >= 5) {
+						arr.push(folder);
+					}
 					creditsStuff.push(arr);
 				}
 				creditsStuff.push(['']);
-			}
+			} #if TXT_ALLOWED else if (FileSystem.exists(luaCreditsFile)) {
+				var firstarray2:Array<String> = File.getContent(luaCreditsFile).split('\n');
+				for(i in firstarray2) {
+					var arr:Array<String> = i.replace('\\n', '\n').split("::");
+					if (arr.length >= 5) {
+						arr.push(folder);
+					}
+					creditsStuff.push(arr);
+				}
+				creditsStuff.push(['']);
+			} #end
 		};
 		var folder = "";
 			var creditsFile:String = Paths.mods('data/credits.txt');
+			var luaCreditsFile:String = Paths.mods('data/credits.lua');
 			if (FileSystem.exists(creditsFile))
 			{
 				var firstarray:Array<String> = File.getContent(creditsFile).split('\n');
 				for(i in firstarray)
 				{
 					var arr:Array<String> = i.replace('\\n', '\n').split("::");
-					if(arr.length >= 5) arr.push(folder);
+					if (arr.length >= 5) {
+						arr.push(folder);
+					}
 					creditsStuff.push(arr);
 				}
 				creditsStuff.push(['']);
-			}
+			} #if TXT_ALLOWED else if (FileSystem.exists(luaCreditsFile))
+				{
+				var firstarray:Array<String> = File.getContent(luaCreditsFile).split('\n');
+				for(i in firstarray)
+				{
+					var arr:Array<String> = i.replace('\\n', '\n').split("::");
+					if (arr.length >= 5) {
+						arr.push(folder);
+					}
+					creditsStuff.push(arr);
+				}
+				creditsStuff.push(['']);
+				} #end
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
@@ -89,6 +116,9 @@ class CreditsState extends MusicBeatState
 			['Wither362',			'wither362',		'Creator/Programmer/Idea creator/nof this mod',				'https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw',    '444444'],
                         ['Wentuj',                      'wentuj',               'Help with animations',                                                         'https://www.youtube.com/channel/UCxpvgozTmlv22kowuogYd-g',    'C30085'],
                         [''],
+			['Wither362 Engine'],
+			['Wither362', 'wither362', 'Programmer and sprites', 'https://www.youtube.com/channel/UCsVr-qBLxT0uSWH037BmlHw', 'FFFFFF'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',						'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',					'https://twitter.com/river_oaken',		'C30085'],
@@ -255,10 +285,12 @@ class CreditsState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		do {
 			curSelected += change;
-			if (curSelected < 0)
+			if (curSelected < 0) {
 				curSelected = creditsStuff.length - 1;
-			if (curSelected >= creditsStuff.length)
+			}
+			if (curSelected >= creditsStuff.length) {
 				curSelected = 0;
+			}
 		} while(unselectableCheck(curSelected));
 
 		var newColor:Int =  getCurrentBGColor();
@@ -281,7 +313,7 @@ class CreditsState extends MusicBeatState
 			item.targetY = bullShit - curSelected;
 			bullShit++;
 
-			if(!unselectableCheck(bullShit-1)) {
+			if (!unselectableCheck(bullShit-1)) {
 				item.alpha = 0.6;
 				if (item.targetY == 0) {
 					item.alpha = 1;
@@ -292,7 +324,9 @@ class CreditsState extends MusicBeatState
 		descText.text = creditsStuff[curSelected][2];
 		descText.y = FlxG.height - descText.height + offsetThing - 60;
 
-		if(moveTween != null) moveTween.cancel();
+		if(moveTween != null) {
+			moveTween.cancel();
+		}
 		moveTween = FlxTween.tween(descText, {y : descText.y + 75}, 0.25, {ease: FlxEase.sineOut});
 
 		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
