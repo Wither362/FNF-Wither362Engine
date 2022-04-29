@@ -1,5 +1,5 @@
 # Wither362 Engine
-An engine that have extra options, takes .lua.txt files and take them like they were lua files, there are't any original songs except tutorial, so this engine was made for custom songs
+An engine that have extra options, takes .lua.txt files and take them like they were lua files, there are't any original songs except tutorial, so this engine was made for custom songs, also this engine was made for the mod: Vs Theo and Elliot, it isn´t finished, so...
 
 
 
