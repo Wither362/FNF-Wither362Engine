@@ -546,7 +546,7 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json') || file.endsWith('.txt'))) #else file.endsWith('.json')) #end {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json') || file.endsWith('.json.txt'))) #else file.endsWith('.json')) #end {
 						var charToCheck:String = file.substr(0, file.length - 5);
 						if (!charToCheck.endsWith('-dead') && !tempMap.exists(charToCheck)) {
 							tempMap.set(charToCheck, true);
@@ -603,7 +603,7 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.txt') || file.endsWith('.json')) #else file.endsWith('.json') #end) {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json.txt') || file.endsWith('.json')) #else file.endsWith('.json') #end) {
 						var stageToCheck:String = file.substr(0, file.length - 5);
 						if (!tempMap.exists(stageToCheck)) {
 							tempMap.set(stageToCheck, true);
@@ -751,11 +751,12 @@ class ChartingState extends MusicBeatState
 			if (notesCopied == null || notesCopied.length < 1) {
 				return;
 			}
+			var newNotesCopied = if(ClientPrefs.reduceNotes && notesCopied.length > 20) notesCopied.splice(notesCopied.length-1, 10) else notesCopied;
 
 			var addToTime:Float = Conductor.stepCrochet * (_song.notes[curSection].lengthInSteps * (curSection - sectionToCopy));
 			//trace('Time to add: ' + addToTime);
 
-			for (note in notesCopied)
+			for (note in newNotesCopied)
 			{
 				var copiedNote:Array<Dynamic> = [];
 				var newStrumTime:Float = note[0] + addToTime;
