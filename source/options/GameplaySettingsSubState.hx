@@ -35,14 +35,14 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
 		var option:Option = new Option("Reduce Notes When Pasting",
-			"If activated, when you paste the notes/nit will reduce them",
+			"If activated, when you paste the notes\nit will reduce them",
 			"reduceNotes",
 			"bool",
 			false);
 		addOption(option);
 		
 		var option:Option = new Option("Multiplicative Value",
-			"When you press SHIFT it multiplies the value by/nthe value you set it\nif it's 0, it will count the dafault value",
+			"When you press SHIFT it multiplies the value by\nthe value you set it\nif it's 0, it will count the dafault value",
 			"multiplicativeValue",
 			"float",
 			0);
