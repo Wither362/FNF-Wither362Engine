@@ -181,7 +181,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: linuxBuild
-          path: 'export/release/linux/debug' 
+          path: 'export/debug/linux/bin' 
   buildWindowsDebug:
     runs-on: windows-latest
     
@@ -223,7 +223,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: windowsBuild
-          path: export/release/windows/debug
+          path: export/debug/windows/bin
   buildMacDebug:
     runs-on: macos-latest
 
@@ -263,4 +263,4 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: macBuild
-          path: export/release/macos/debug
+          path: export/debug/macos/bin
