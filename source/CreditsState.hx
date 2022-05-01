@@ -58,6 +58,7 @@ class CreditsState extends MusicBeatState
 		{
 			var creditsFile:String = Paths.mods(folder + '/data/credits.txt');
 			var luaCreditsFile:String = Paths.mods(folder + '/data/credits.lua');
+			var mdCreditsFile:String = Paths.mods(folder + 'data/credits.md');
 			if (FileSystem.exists(creditsFile))
 			{
 				var firstarray:Array<String> = File.getContent(creditsFile).split('\n');
@@ -69,21 +70,34 @@ class CreditsState extends MusicBeatState
 					creditsStuff.push(arr);
 				}
 				creditsStuff.push(['']);
-			} #if TXT_ALLOWED else if (FileSystem.exists(luaCreditsFile)) {
-				var firstarray2:Array<String> = File.getContent(luaCreditsFile).split('\n');
-				for(i in firstarray2) {
-					var arr:Array<String> = i.replace('\\n', '\n').split("::");
-					if (arr.length >= 5) {
-						arr.push(folder);
+			} #if TXT_ALLOWED
+				else if (FileSystem.exists(luaCreditsFile)) {
+					var firstarray2:Array<String> = File.getContent(luaCreditsFile).split('\n');
+					for(i in firstarray2) {
+						var arr:Array<String> = i.replace('\\n', '\n').split("::");
+						if (arr.length >= 5) {
+							arr.push(folder);
+						}
+						creditsStuff.push(arr);
 					}
-					creditsStuff.push(arr);
+					creditsStuff.push(['']);
+				} else if (FileSystem.exists(mdCreditsFile)) {
+					var firstarray3:Array<String> = File.getContent(mdCreditsFile).split('\n');
+					for(i in firstarray3) {
+						var arr:Array<String> = i.replace('\\n', '\n').split("::");
+						if (arr.length >= 5) {
+							arr.push(folder);
+						}
+						creditsStuff.push(arr);
+					}
+					creditsStuff.push(['']);
 				}
-				creditsStuff.push(['']);
-			} #end
+			#end
 		};
 		var folder = "";
 			var creditsFile:String = Paths.mods('data/credits.txt');
-			var luaCreditsFile:String = Paths.mods('data/credits.lua');
+		 	var luaCreditsFile:String = Paths.mods('data/credits.lua');
+		 	var mdCreditsFile:String = Paths.mods('data/credits.md');
 			if (FileSystem.exists(creditsFile))
 			{
 				var firstarray:Array<String> = File.getContent(creditsFile).split('\n');
@@ -96,19 +110,29 @@ class CreditsState extends MusicBeatState
 					creditsStuff.push(arr);
 				}
 				creditsStuff.push(['']);
-			} #if TXT_ALLOWED else if (FileSystem.exists(luaCreditsFile))
-				{
-				var firstarray:Array<String> = File.getContent(luaCreditsFile).split('\n');
-				for(i in firstarray)
-				{
-					var arr:Array<String> = i.replace('\\n', '\n').split("::");
-					if (arr.length >= 5) {
-						arr.push(folder);
+			} #if TXT_ALLOWED
+				else if (FileSystem.exists(luaCreditsFile)) {
+					var firstarray:Array<String> = File.getContent(luaCreditsFile).split('\n');
+					for(i in firstarray) {
+						var arr:Array<String> = i.replace('\\n', '\n').split("::");
+						if (arr.length >= 5) {
+							arr.push(folder);
+						}
+						creditsStuff.push(arr);
 					}
-					creditsStuff.push(arr);
+					creditsStuff.push(['']);
+				} else if (FileSystem.exists(mdCreditsFile)) {
+					var firstarray:Array<String> = File.getContent(luaCreditsFile).split('\n');
+					for(i in firstarray) {
+						var arr:Array<String> = i.replace('\\n', '\n').split("::");
+						if (arr.length >= 5) {
+							arr.push(folder);
+						}
+						creditsStuff.push(arr);
+					}
+					creditsStuff.push(['']);
 				}
-				creditsStuff.push(['']);
-				} #end
+		 	#end
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
