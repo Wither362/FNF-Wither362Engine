@@ -546,7 +546,7 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json') || file.endsWith('.json.txt'))) #else file.endsWith('.json')) #end {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED ((file.endsWith('.json') || file.endsWith('.json.txt') || file.endsWith('.txt'))) && file != 'readme.txt') #else file.endsWith('.json')) #end {
 						var charToCheck:String = file.substr(0, file.length - 5);
 						if (!charToCheck.endsWith('-dead') && !tempMap.exists(charToCheck)) {
 							tempMap.set(charToCheck, true);
@@ -603,7 +603,7 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED (file.endsWith('.json.txt') || file.endsWith('.json')) #else file.endsWith('.json') #end) {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED ((file.endsWith('.json.txt') || file.endsWith('.json') || file.endsWith('.txt')) && file != 'readme.txt') #else file.endsWith('.json') #end) {
 						var stageToCheck:String = file.substr(0, file.length - 5);
 						if (!tempMap.exists(stageToCheck)) {
 							tempMap.set(stageToCheck, true);
