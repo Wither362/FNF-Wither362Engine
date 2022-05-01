@@ -60,7 +60,7 @@ class MenuCharacter extends FlxSprite
 				var txtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
-				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath)) {
+				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath) && file != 'readme.txt') {
 					path = Paths.getPreloadPath(txtCharacterPath);
 				} #end
 
