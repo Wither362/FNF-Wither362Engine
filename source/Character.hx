@@ -107,7 +107,7 @@ class Character extends FlxSprite
 				var jsonTxtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
-				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath)) {
+				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath) && file != 'readme.txt') {
 					path = Paths.getPreloadPath(txtCharacterPath);
 				} else if (!FileSystem.exists(jsonTxtPath)) {
 					path = Paths.getPreloadPath(jsonTxtPath);
