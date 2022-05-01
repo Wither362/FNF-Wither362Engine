@@ -55,7 +55,7 @@ class FreeplayState extends MusicBeatState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		
-		persistentUpdate = if(ClientPrefs.persistentUpdate) true else false; 
+		persistentUpdate = ClientPrefs.persistentUpdate; 
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
 
