@@ -21,7 +21,6 @@ typedef MenuCharacterFile = {
 
 class MenuCharacter extends FlxSprite
 {
-	var _file:FileReference;
 	public var character:String;
 	private static var DEFAULT_CHARACTER:String = 'bf';
 
@@ -63,7 +62,7 @@ class MenuCharacter extends FlxSprite
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
 				} #if TXT_ALLOWED 
-					else if (!FileSystem.exists(txtPath) && _file != 'readme.txt') {
+					else if (!FileSystem.exists(txtPath)) {
 						path = Paths.getPreloadPath(txtCharacterPath);
 					}
 				#end
