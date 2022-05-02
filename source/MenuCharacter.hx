@@ -2,10 +2,11 @@ package;
 
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
-#if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
-#end
+import openfl.utils.ByteArray;
+import openfl.utils.Assets as OpenFlAssets;
+import openfl.net.FileReference;
 import openfl.utils.Assets;
 import haxe.Json;
 import haxe.format.JsonParser;
@@ -60,9 +61,11 @@ class MenuCharacter extends FlxSprite
 				var txtPath:String = Paths.modFolders(txtCharacterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
-				} #if TXT_ALLOWED else if (!FileSystem.exists(txtPath) && file != 'readme.txt') {
-					path = Paths.getPreloadPath(txtCharacterPath);
-				} #end
+				} #if TXT_ALLOWED 
+					else if (!FileSystem.exists(txtPath) && file != 'readme.txt') {
+						path = Paths.getPreloadPath(txtCharacterPath);
+					}
+				#end
 
 				if(!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath('images/menucharacters/' + DEFAULT_CHARACTER + '.json');
