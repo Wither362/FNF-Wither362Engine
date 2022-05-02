@@ -45,7 +45,7 @@ typedef AnimArray = {
 
 class Character extends FlxSprite
 {
-	var _file:FileReference;
+	//var _file:FileReference;
 	
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
@@ -109,7 +109,7 @@ class Character extends FlxSprite
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
 				} #if TXT_ALLOWED 
-					else if (!FileSystem.exists(txtPath) && _file != 'readme.txt') {
+					else if (!FileSystem.exists(txtPath)) {
 						path = Paths.getPreloadPath(txtCharacterPath);
 					} else if (!FileSystem.exists(jsonTxtPath)) {
 						path = Paths.getPreloadPath(jsonTxtPath);
