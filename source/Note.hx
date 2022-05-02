@@ -110,6 +110,20 @@ class Note extends FlxSprite
 					noAnimation = true;
 				case 'GF Sing':
 					gfNote = true;
+				case 'No Hurt Note':
+					ignoreNote = false;
+					mustPress = true;
+					reloadNote('NOHURT');
+					noteSplashTexture = 'noteSplashes';
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+					if(isSustainNote) {
+						hitHealth = 0.1;
+					} else {
+						hitHealth = 0.3;
+					}
+					hitCausesMiss = false;
 			}
 			noteType = value;
 		}
