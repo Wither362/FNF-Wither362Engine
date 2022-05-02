@@ -10,10 +10,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxSort;
 import Section.SwagSection;
 import lime.utils.Assets;
-#if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
-#end
 import openfl.utils.AssetType;
 import openfl.utils.Assets;
 import haxe.Json;
