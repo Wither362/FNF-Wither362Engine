@@ -28,6 +28,7 @@ class ClientPrefs {
 	public static var noReset:Bool = false;
 	
 	public static var lastBpm:Float = 100;
+	public static var letters:String = "vcr.tff";
 	
 	public static var saltarIntro:Bool = false;
 	public static var moreThings:Bool = false;
@@ -110,6 +111,7 @@ class ClientPrefs {
 	}
 
 	public static function saveSettings() {
+		FlxG.save.data.letters = letters;
 		FlxG.save.data.lastBpm = lastBpm;
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
@@ -167,6 +169,9 @@ class ClientPrefs {
 	}
 
 	public static function loadPrefs() {
+		if(FlxG.save.data.letters != null) {
+			letters = FlxG.save.data.letters;
+		}
 		if(FlxG.save.data.otherLink != null) {
 			otherLink = FlxG.save.data.otherLink;
 		}
