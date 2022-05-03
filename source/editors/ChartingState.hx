@@ -2076,6 +2076,20 @@ class ChartingState extends MusicBeatState
 		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Inst.mp3"))) {
 			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Inst.mp3'));
 		#end
+		#if MP2_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Inst.mp2"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Inst.mp2'));
+		#end
+		#if MP1_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Inst.mp1"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Inst.mp1'));
+		#end
+		#if AAC_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Inst.aac"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Inst.aac'));
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Inst.AAC"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Inst.AAC'));
+		#end
 		} else { #end
 			var leVocals:String = Paths.getPath(currentSongName + '/Inst.' + Paths.SOUND_EXT, SOUND, 'songs');
 			if (OpenFlAssets.exists(leVocals)) { //Vanilla inst
@@ -2097,6 +2111,24 @@ class ChartingState extends MusicBeatState
 		#if WAV_ALLOWED 
 		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Voices.wav'))) {
 			audioBuffers[1] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Voices.wav'));
+		#end
+		#if MP3_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Voices.mp3'))) {
+			audioBuffers[1] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Voices.mp3'));
+		#end
+		#if MP2_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Voices.mp2"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Voices.mp2'));
+		#end
+		#if MP1_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Voices.mp1"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Voices.mp1'));
+		#end
+		#if AAC_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Voices.aac"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Voices.aac'));
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + "/Voices.AAC"))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + 'Voices.AAC'));
 		#end
 		} else { #end
 			var leVocals:String = Paths.getPath(currentSongName + '/Voices.' + Paths.SOUND_EXT, SOUND, 'songs');
@@ -2506,7 +2538,7 @@ class ChartingState extends MusicBeatState
 				}
 
 				var daText:AttachedFlxText = new AttachedFlxText(0, 0, 400, text, 12);
-				daText.setFormat(Paths.font("vcr.ttf"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK);
+				daText.setFormat(Paths.font("vcr.tff"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK);
 				daText.xAdd = -410;
 				daText.borderSize = 1;
 				if (note.eventLength > 1) {
