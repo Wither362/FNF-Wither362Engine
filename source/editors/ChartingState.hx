@@ -55,6 +55,8 @@ using StringTools;
 
 class ChartingState extends MusicBeatState
 {
+	var lettersCharting = ClientPrefs.letters;
+
 	public static var noteTypeList:Array<String> = //Used for backwards compatibility with 0.1 - 0.3.2 charts, though, you should add your hardcoded custom note types here too.
 	[
 		'',
@@ -373,7 +375,7 @@ class ChartingState extends MusicBeatState
 		for (i in 0...tipTextArray.length) {
 			var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 8, 0, tipTextArray[i], 16);
 			tipText.y += i * 14;
-			tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+			tipText.setFormat(Paths.font(lettersCharting/*"vcr.tff"*/), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 			//tipText.borderSize = 2;
 			tipText.scrollFactor.set();
 			add(tipText);
@@ -819,7 +821,7 @@ class ChartingState extends MusicBeatState
 		var copyLastButton:FlxButton = new FlxButton(10, 270, "Copy last section", function()
 		{
 			var value:Int = Std.int(stepperCopy.value);
-			if (value == 0) {
+			if (value < 1) {
 				return;
 			}
 
@@ -1009,7 +1011,7 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && file.endsWith('.txt')) {
+					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && #if TXT_ALLOWED (file.endsWith('.txt.lua') || file.endsWith('.txt')) #else file.endsWith('.txt') #end) 
 						var fileToCheck:String = file.substr(0, file.length - 4);
 						if (!eventPushedMap.exists(fileToCheck)) {
 							eventPushedMap.set(fileToCheck, true);
@@ -1214,7 +1216,9 @@ class ChartingState extends MusicBeatState
 			FlxG.sound.music.volume = vol;
 		};
 		check_vortex = new FlxUICheckBox(10, 160, null, null, "Vortex Editor (BETA)", 100);
-		if (FlxG.save.data.chart_vortex == null) FlxG.save.data.chart_vortex = false;
+		if (FlxG.save.data.chart_vortex == null) {
+			FlxG.save.data.chart_vortex = false;
+		}
 		check_vortex.checked = FlxG.save.data.chart_vortex;
 
 		check_vortex.callback = function()
@@ -1240,7 +1244,7 @@ class ChartingState extends MusicBeatState
 		check_mute_vocals.checked = false;
 		check_mute_vocals.callback = function()
 		{
-			if(vocals != null) {
+			if (vocals != null) {
 				var vol:Float = 1;
 
 				if (check_mute_vocals.checked) {
@@ -1519,7 +1523,7 @@ class ChartingState extends MusicBeatState
 	{
 		curStep = recalculateSteps();
 
-		if(FlxG.sound.music.time < 0) {
+		if (FlxG.sound.music.time < 0) {
 			FlxG.sound.music.pause();
 			FlxG.sound.music.time = 0;
 		}
@@ -1545,8 +1549,7 @@ class ChartingState extends MusicBeatState
 				//trace((_song.notes[curSection].lengthInSteps) * (curSection + 1));
 				//trace('DUMBSHIT');
 
-				if (_song.notes[curSection + 1] == null)
-				{
+				if (_song.notes[curSection + 1] == null) {
 					addSection();
 				}
 
@@ -1813,7 +1816,7 @@ class ChartingState extends MusicBeatState
 				FlxG.keys.justPressed.FIVE,
 				FlxG.keys.justPressed.SIX,
 				FlxG.keys.justPressed.SEVEN,
-				FlxG.keys.justPressed.EIGHT
+				FlxG.keys.justPressed.EIGHT //there isnt 9 because there are 8 notes
 			];
 
 			if(controlArray.contains(true))
@@ -2061,6 +2064,10 @@ class ChartingState extends MusicBeatState
 		if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Inst.ogg'))) {
 			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Inst.ogg'));
 			//trace('Custom vocals found');
+		#if WAV_ALLOWED
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Inst.wav'))) {
+			audioBuffers[0] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Inst.wav'));
+		#end
 		} else { #end
 			var leVocals:String = Paths.getPath(currentSongName + '/Inst.' + Paths.SOUND_EXT, SOUND, 'songs');
 			if (OpenFlAssets.exists(leVocals)) { //Vanilla inst
@@ -2079,6 +2086,10 @@ class ChartingState extends MusicBeatState
 		if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Voices.ogg'))) {
 			audioBuffers[1] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Voices.ogg'));
 			//trace('Custom vocals found');
+		#if WAV_ALLOWED 
+		} else if (FileSystem.exists(Paths.modFolders('songs/' + currentSongName + '/Voices.wav'))) {
+			audioBuffers[1] = AudioBuffer.fromFile(Paths.modFolders('songs/' + currentSongName + '/Voices.wav'));
+		#end
 		} else { #end
 			var leVocals:String = Paths.getPath(currentSongName + '/Voices.' + Paths.SOUND_EXT, SOUND, 'songs');
 			if (OpenFlAssets.exists(leVocals)) { //Vanilla voices
