@@ -33,6 +33,7 @@ import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
 import haxe.Json;
+import haxe;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 import openfl.events.Event;
@@ -343,28 +344,31 @@ class ChartingState extends MusicBeatState
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
-		text = if(ClientPrefs.badWords)
-		"W/S or Mouse Wheel - Change Fucking Conductor's strum time
-		\nA or Left/D or Right - Go to the fucking previous/next fucking section
-		\nHold Shift to fucking move 4x faster
-		\nHold Control and click on a fucking arrow to fucking select it
-		\nZ/X - Zoom in/out
-		\n
-		\nEsc - Test your chart inside Chart Editor
-		\nEnter - Play your chart
-		\nQ/E - Decrease/Increase Note Sustain Length
-		\nSpace - Stop/Resume fucking song
-		\nMax bpm is 100000 and max scroll speed is 1000" else "W/S or Mouse Wheel - Change Conductor's strum time
-		\nA or Left/D or Right - Go to the previous/next section
-		\nHold Shift to move 4x faster
-		\nHold Control and click on an arrow to select it
-		\nZ/X - Zoom in/out
-		\n
-		\nEsc - Test your chart inside Chart Editor
-		\nEnter - Play your chart
-		\nQ/E - Decrease/Increase Note Sustain Length
-		\nSpace - Stop/Resume song
-		\nMax bpm is 100000 and max scroll speed is 1000";
+		text = if(ClientPrefs.badWords) {
+			"W/S or Mouse Wheel - Change Fucking Conductor's strum time
+			\nA or Left/D or Right - Go to the fucking previous/next fucking section
+			\nHold Shift to fucking move 4x faster
+			\nHold Control and click on a fucking arrow to fucking select it
+			\nZ/X - Zoom in/out
+			\n
+			\nEsc - Test your chart inside Chart Editor
+			\nEnter - Play your chart
+			\nQ/E - Decrease/Increase Note Sustain Length
+			\nSpace - Stop/Resume fucking song
+			\nMax bpm is 100000 and max scroll speed is 1000";
+		} else {
+			"W/S or Mouse Wheel - Change Conductor's strum time
+			\nA or Left/D or Right - Go to the previous/next section
+			\nHold Shift to move 4x faster
+			\nHold Control and click on an arrow to select it
+			\nZ/X - Zoom in/out
+			\n
+			\nEsc - Test your chart inside Chart Editor
+			\nEnter - Play your chart
+			\nQ/E - Decrease/Increase Note Sustain Length
+			\nSpace - Stop/Resume song
+			\nMax bpm is 100000 and max scroll speed is 1000";
+		}
 
 		var tipTextArray:Array<String> = text.split('\n');
 		for (i in 0...tipTextArray.length) {
@@ -516,7 +520,7 @@ class ChartingState extends MusicBeatState
 		clear_notes.color = FlxColor.RED;
 		clear_notes.label.color = FlxColor.WHITE;
 
-		var changeeValue = if(ClientPrefs.multiplicativeValue > 0) ClientPrefs.multiplicativeValue else 1;
+		var changeeValue = if(ClientPrefs.multiplicativeValue > 0 /*&& FlxG.keys.pressed.SHIFT /*esto no es necesario*/) ClientPrefs.multiplicativeValue else 1;
 		
 		var stepperBPM:FlxUINumericStepper = if(FlxG.keys.pressed.SHIFT) new FlxUINumericStepper(10, 70, changeeValue, 1, 1, maxBpm, 1) else new FlxUINumericStepper(10, 70, 1, 1, 1, maxBpm, 1);
 		stepperBPM.value = Conductor.bpm;
@@ -546,7 +550,8 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED ((file.endsWith('.json') || file.endsWith('.json.txt') || file.endsWith('.txt'))) && file != 'readme.txt') #else file.endsWith('.json')) #end {
+					if (!FileSystem.isDirectory(path) && #if TXT_ALLOWED 
+					    ((file.endsWith('.json') || file.endsWith('.json.txt') || file.endsWith('.txt'))) && file != 'readme.txt') #else file.endsWith('.json')) #end {
 						var charToCheck:String = file.substr(0, file.length - 5);
 						if (!charToCheck.endsWith('-dead') && !tempMap.exists(charToCheck)) {
 							tempMap.set(charToCheck, true);
