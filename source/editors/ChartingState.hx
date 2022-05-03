@@ -1020,7 +1020,6 @@ class ChartingState extends MusicBeatState
 					}
 				}
 			}
-		}
 		eventPushedMap.clear();
 		eventPushedMap = null;
 		#end
