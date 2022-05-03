@@ -27,6 +27,8 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	
+	public static var lastBpm:Float = 100;
+	
 	public static var saltarIntro:Bool = false;
 	public static var moreThings:Bool = false;
 	public static var chartingActivated:Bool = false;
@@ -108,6 +110,7 @@ class ClientPrefs {
 	}
 
 	public static function saveSettings() {
+		FlxG.save.data.lastBpm = lastBpm;
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.musicWhenDead = musicWhenDead;
@@ -166,6 +169,9 @@ class ClientPrefs {
 	public static function loadPrefs() {
 		if(FlxG.save.data.otherLink != null) {
 			otherLink = FlxG.save.data.otherLink;
+		}
+		if(FlxG.save.data.lastBpm != null) {
+			lastBpm = FlxG.save.data.lastBpm;
 		}
 		if(FlxG.save.data.multiplicativeValue != null) {
 			multiplicativeValue = FlxG.save.data.multiplicativeValue;
