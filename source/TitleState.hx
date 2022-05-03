@@ -642,7 +642,7 @@ class TitleState extends MusicBeatState
 
 				case 32:
 					deleteCoolText();
-					#if FUNNY_THING if (randomm(0, 3) == 0) {createCoolText(['Fuck you little']);addMoreText('Piece of shit');} else {#end createCoolText(['Please like it']); addMoreText('It took me years');
+					#if FUNNY_THING if (randomm(0, 3) == 0) {createCoolText(['Fuck you little']);addMoreText('Piece of shit');} else {#end createCoolText(['Please like it']); addMoreText('It took me years');}
 				case 36:
 					skipIntro();
 			}
