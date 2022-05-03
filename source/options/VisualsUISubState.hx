@@ -34,6 +34,23 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
+		var option:Option = new Option('Type of Letters',
+			"Type of letter, vcr.tff is normal",
+			"letters",
+			"string",
+			"vcr.tff",
+			[
+				"vcr.tff",
+				'DESTROY.TFF',
+				'DONNIENN.TTF',
+				'Horrorfind.ttf',
+				'Horrormaster.ttf',
+				'JUNESN__.ttf',
+				'TheEndFont(RF).ttf',
+				'pixel.otf',
+			]);
+		addOption(option);
+		
 		var option:Option = new Option('Note Splashes',
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",
 			'noteSplashes',
