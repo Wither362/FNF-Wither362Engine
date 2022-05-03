@@ -1011,7 +1011,11 @@ class ChartingState extends MusicBeatState
 			if (FileSystem.exists(directory)) {
 				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && #if TXT_ALLOWED (file.endsWith('.txt.lua') || file.endsWith('.txt')) #else file.endsWith('.txt') #end) 
+					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && 
+					    #if TXT_ALLOWED (file.endsWith('.txt.lua') || file.endsWith('.txt'))
+					    #else 
+					    file.endsWith('.txt') #end)
+					    {
 						var fileToCheck:String = file.substr(0, file.length - 4);
 						if (!eventPushedMap.exists(fileToCheck)) {
 							eventPushedMap.set(fileToCheck, true);
@@ -1020,6 +1024,7 @@ class ChartingState extends MusicBeatState
 					}
 				}
 			}
+		}
 		eventPushedMap.clear();
 		eventPushedMap = null;
 		#end
