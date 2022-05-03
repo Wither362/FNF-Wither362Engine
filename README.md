@@ -1,5 +1,5 @@
 # Wither362 Engine
-An engine that have extra options, takes .lua.txt files and take them like they were lua files, there are't any original songs except tutorial, so this engine was made for custom songs, also this engine was made for the mod: Vs Theo and Elliot, it isn´t finished, so...
+An engine that have extra options, takes `.lua.txt` files and take them like they were `lua`files, literaly, takes .txt and `.md`;files and convert them into `lua` and `json`, if you want more information of what does this engine do, go to the [`project.xml`](https://github.com/Wither362/FNF-Wither362Engine/blob/main/Project.xml), there are't any original songs except tutorial, so this engine was made for custom songs, also this engine was made for the mod: Vs Theo and Elliot, it isn´t finished, so...
 
 
 
