@@ -19,6 +19,9 @@ import openfl.display.BitmapData;
 import sys.FileSystem;
 import sys.io.File;
 #end
+#if FUNNY_THINGS
+import Math.random;
+#end
 import options.GraphicsSettingsSubState;
 //import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -500,6 +503,11 @@ class TitleState extends MusicBeatState
 			textGroup.remove(textGroup.members[0], true);
 		}
 	}
+	// Retorna un número aleatorio entre min (incluido) y max (excluido)
+	function randomm(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+
 
 	private var sickBeats:Int = 0; //Basically curBeat but won't be skipped if you hold the tab or resize the screen
 	public static var closedState:Bool = false;
@@ -634,8 +642,7 @@ class TitleState extends MusicBeatState
 
 				case 32:
 					deleteCoolText();
-					createCoolText(['Please like it']);
-					addMoreText('It took me years');
+					#if FUNNY_THING if (randomm(0, 3) == 0) {createCoolText(['Fuck you little']);addMoreText('Piece of shit');} else {#end createCoolText(['Please like it']); addMoreText('It took me years');
 				case 36:
 					skipIntro();
 			}
